@@ -1,0 +1,37 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/who-is-gary"
+  to = "/who-is-gary/"
+  status = 301
+
+[[redirects]]
+  from = "/the-issues"
+  to = "/the-issues/"
+  status = 301
+
+[[redirects]]
+  from = "/supporters"
+  to = "/supporters/"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/media"
+  to = "/media/"
+  status = 301
+
+[[redirects]]
+  from = "/media/media-archive"
+  to = "/media/media-archive/"
+  status = 301
+
+[[redirects]]
+  from = "/links-resources"
+  to = "/links-resources/"
+  status = 301
