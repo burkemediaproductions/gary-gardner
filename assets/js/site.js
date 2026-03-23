@@ -93,4 +93,86 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+    const galleryLinks = Array.from(document.querySelectorAll("[data-lightbox]"));
+
+  if (galleryLinks.length) {
+    const overlay = document.createElement("div");
+    overlay.className = "lightbox-overlay";
+    overlay.hidden = true;
+    overlay.innerHTML = `
+      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Image gallery">
+        <button class="lightbox-close" type="button" aria-label="Close image viewer">×</button>
+        <div class="lightbox-image-wrap">
+          <img class="lightbox-image" src="" alt="">
+        </div>
+        <p class="lightbox-caption"></p>
+        <div class="lightbox-nav">
+          <button class="lightbox-prev" type="button" aria-label="Previous image">‹</button>
+          <button class="lightbox-next" type="button" aria-label="Next image">›</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    const imageEl = overlay.querySelector(".lightbox-image");
+    const captionEl = overlay.querySelector(".lightbox-caption");
+    const closeBtn = overlay.querySelector(".lightbox-close");
+    const prevBtn = overlay.querySelector(".lightbox-prev");
+    const nextBtn = overlay.querySelector(".lightbox-next");
+
+    let currentIndex = 0;
+    let activeGroup = [];
+
+    const openLightbox = (group, index) => {
+      activeGroup = group;
+      currentIndex = index;
+      const link = activeGroup[currentIndex];
+      const img = link.querySelector("img");
+
+      imageEl.src = link.href;
+      imageEl.alt = img ? img.alt : "";
+      captionEl.textContent = img ? img.alt : "";
+      overlay.hidden = false;
+      document.body.classList.add("nav-open");
+      closeBtn.focus();
+    };
+
+    const closeLightbox = () => {
+      overlay.hidden = true;
+      imageEl.src = "";
+      document.body.classList.remove("nav-open");
+    };
+
+    const showIndex = (index) => {
+      if (!activeGroup.length) return;
+      currentIndex = (index + activeGroup.length) % activeGroup.length;
+      openLightbox(activeGroup, currentIndex);
+    };
+
+    galleryLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const groupName = link.getAttribute("data-lightbox");
+        const group = galleryLinks.filter((item) => item.getAttribute("data-lightbox") === groupName);
+        const index = group.indexOf(link);
+        openLightbox(group, index);
+      });
+    });
+
+    closeBtn.addEventListener("click", closeLightbox);
+    prevBtn.addEventListener("click", () => showIndex(currentIndex - 1));
+    nextBtn.addEventListener("click", () => showIndex(currentIndex + 1));
+
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (overlay.hidden) return;
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") showIndex(currentIndex - 1);
+      if (event.key === "ArrowRight") showIndex(currentIndex + 1);
+    });
+  }
 });
+

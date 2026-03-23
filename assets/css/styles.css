@@ -162,7 +162,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   gap: .45rem;
-  margin: 0;
+  margin: 0;	
   padding: 0;
 }
 
@@ -180,6 +180,15 @@ button:focus-visible {
   text-transform: uppercase;
   font-weight: 800;
   transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+
+@media (max-width: 1350px) {
+	.desktop-nav-list {
+		gap: 0;
+	}
+	.desktop-nav-list a {
+		padding: .7rem .8rem
+	}
 }
 
 .desktop-nav-list a:hover,
@@ -275,7 +284,7 @@ button:focus-visible {
   transform: translateY(0);
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
   .header-inner {
     max-width: 1720px;
     gap: 1.5rem;
@@ -630,6 +639,8 @@ input:focus, textarea:focus, .menu-button:focus-visible, .btn:focus-visible, .na
 .video-grid {
   display: grid; gap: 1.25rem; grid-template-columns: repeat(2, minmax(0, 1fr));
 }
+.video-list {display: block;}
+.video-list .video-embed-card {margin:20px auto; width:100%; max-width:950px;}
 .video-card, .gallery-card {
   background: rgba(255,255,255,.14); border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow);
 }
@@ -925,5 +936,192 @@ input:focus, textarea:focus, .menu-button:focus-visible, .btn:focus-visible, .na
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+.mosaic-gallery {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.mosaic-item {
+  display: block;
+  grid-column: span 4;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #f7f7f9;
+  text-decoration: none;
+}
+
+.mosaic-item--wide {
+  grid-column: span 8;
+}
+
+.mosaic-item--tall {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+.mosaic-item img {
+  width: 100%;
+  max-height: 420px;
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+  background: #f7f7f9;
+}
+
+.mosaic-item--tall img {
+  max-height: 420px;
+}
+
+@media (max-width: 960px) {
+  .mosaic-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mosaic-item,
+  .mosaic-item--wide,
+  .mosaic-item--tall {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .mosaic-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* lightbox */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 16, .92);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 9999;
+}
+
+.lightbox-overlay[hidden] {
+  display: none;
+}
+
+.lightbox-dialog {
+  position: relative;
+  width: min(100%, 1200px);
+  max-height: 100%;
+  display: grid;
+  gap: .75rem;
+}
+
+.lightbox-image-wrap {
+  background: #111;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,.35);
+}
+
+.lightbox-image {
+  display: block;
+  width: 100%;
+  max-height: 80vh;
+  margin: 0 auto;
+  object-fit: contain;
+  background: #111;
+}
+
+.lightbox-caption {
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  border: 0;
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: .75rem;
+  right: .75rem;
+  z-index: 2;
+}
+
+.lightbox-nav {
+  display: flex;
+  justify-content: center;
+  gap: .75rem;
+}
+
+.hero--major-accomplishments::after {
+  background-image:
+    linear-gradient(180deg, rgba(8,12,24,.22), rgba(8,12,24,.58)),
+    url("/assets/img/majoraccomplishments.jpg");
+}
+
+.accomplishments-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.accomplishment-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.accomplishment-media {
+  margin: 0;
+  background: #f3f5f8;
+  height: 450px;
+  overflow: hidden;
+}
+
+.accomplishment-media img, .accomplishment-media video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.accomplishment-copy {
+  padding: 1.25rem 1.25rem 1.4rem;
+}
+
+.accomplishments-title {
+  margin: 0 0 .65rem;
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  line-height: 1;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  color: var(--blue);
+}
+
+.accomplishment-copy p {
+  margin: 0;
+}
+
+@media (min-width: 960px) {
+  .accomplishments-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
   }
 }
