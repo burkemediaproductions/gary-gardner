@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const linkPath = normalizePath(new URL(href, window.location.origin).pathname);
-
     link.removeAttribute("aria-current");
 
     if (linkPath === currentPath) {
@@ -54,46 +53,47 @@ document.addEventListener("DOMContentLoaded", () => {
     revealItems.forEach((item) => item.classList.add("is-visible"));
   }
 
-  if (!menuButton || !nav || !navClose || !navBackdrop) return;
+  if (menuButton && nav && navClose && navBackdrop) {
+    const openMenu = () => {
+      nav.classList.add("open");
+      navBackdrop.classList.add("open");
+      menuButton.setAttribute("aria-expanded", "true");
+      body.classList.add("nav-open");
+      navClose.focus();
+    };
 
-  const openMenu = () => {
-    nav.classList.add("open");
-    navBackdrop.classList.add("open");
-    menuButton.setAttribute("aria-expanded", "true");
-    body.classList.add("nav-open");
-    navClose.focus();
-  };
+    const closeMenu = () => {
+      nav.classList.remove("open");
+      navBackdrop.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+      body.classList.remove("nav-open");
+      menuButton.focus();
+    };
 
-  const closeMenu = () => {
-    nav.classList.remove("open");
-    navBackdrop.classList.remove("open");
-    menuButton.setAttribute("aria-expanded", "false");
-    body.classList.remove("nav-open");
-    menuButton.focus();
-  };
+    menuButton.addEventListener("click", () => {
+      const expanded = menuButton.getAttribute("aria-expanded") === "true";
+      expanded ? closeMenu() : openMenu();
+    });
 
-  menuButton.addEventListener("click", () => {
-    const expanded = menuButton.getAttribute("aria-expanded") === "true";
-    expanded ? closeMenu() : openMenu();
-  });
+    navClose.addEventListener("click", closeMenu);
+    navBackdrop.addEventListener("click", closeMenu);
 
-  navClose.addEventListener("click", closeMenu);
-  navBackdrop.addEventListener("click", closeMenu);
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && nav.classList.contains("open")) {
-      closeMenu();
-    }
-  });
-
-  nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      if (window.innerWidth < desktopBreakpoint) {
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("open")) {
         closeMenu();
       }
     });
-  });
-    const galleryLinks = Array.from(document.querySelectorAll("[data-lightbox]"));
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth < desktopBreakpoint) {
+          closeMenu();
+        }
+      });
+    });
+  }
+
+  const galleryLinks = Array.from(document.querySelectorAll("[data-lightbox]"));
 
   if (galleryLinks.length) {
     const overlay = document.createElement("div");
@@ -126,6 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const openLightbox = (group, index) => {
       activeGroup = group;
       currentIndex = index;
+
       const link = activeGroup[currentIndex];
       const img = link.querySelector("img");
 
@@ -146,14 +147,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const showIndex = (index) => {
       if (!activeGroup.length) return;
       currentIndex = (index + activeGroup.length) % activeGroup.length;
-      openLightbox(activeGroup, currentIndex);
+
+      const link = activeGroup[currentIndex];
+      const img = link.querySelector("img");
+
+      imageEl.src = link.href;
+      imageEl.alt = img ? img.alt : "";
+      captionEl.textContent = img ? img.alt : "";
     };
 
     galleryLinks.forEach((link) => {
       link.addEventListener("click", (event) => {
         event.preventDefault();
         const groupName = link.getAttribute("data-lightbox");
-        const group = galleryLinks.filter((item) => item.getAttribute("data-lightbox") === groupName);
+        const group = galleryLinks.filter(
+          (item) => item.getAttribute("data-lightbox") === groupName
+        );
         const index = group.indexOf(link);
         openLightbox(group, index);
       });
@@ -174,5 +183,126 @@ document.addEventListener("DOMContentLoaded", () => {
       if (event.key === "ArrowRight") showIndex(currentIndex + 1);
     });
   }
-});
 
+  const donationChoices = document.querySelectorAll('input[name="donation-choice"]');
+  const customAmountWrap = document.getElementById("custom-amount-wrap");
+  const customAmountInput = document.getElementById("donate-amount-other");
+  const finalDonationAmount = document.getElementById("donation-amount-final");
+
+  if (
+    donationChoices.length &&
+    customAmountWrap &&
+    customAmountInput &&
+    finalDonationAmount
+  ) {
+    const updateDonationAmount = () => {
+      const selected = document.querySelector('input[name="donation-choice"]:checked');
+
+      if (!selected) {
+        customAmountWrap.hidden = true;
+        customAmountInput.required = false;
+        customAmountInput.value = "";
+        finalDonationAmount.value = "";
+        return;
+      }
+
+      if (selected.value === "other") {
+        customAmountWrap.hidden = false;
+        customAmountInput.required = true;
+        finalDonationAmount.value = customAmountInput.value.trim();
+      } else {
+        customAmountWrap.hidden = true;
+        customAmountInput.required = false;
+        customAmountInput.value = "";
+        finalDonationAmount.value = selected.value;
+      }
+    };
+
+    donationChoices.forEach((choice) => {
+      choice.addEventListener("change", updateDonationAmount);
+    });
+
+    customAmountInput.addEventListener("input", () => {
+      finalDonationAmount.value = customAmountInput.value.trim();
+    });
+
+    updateDonationAmount();
+  }
+
+  const donateForm = document.querySelector('form[name="donate"]');
+
+  if (donateForm) {
+    donateForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(donateForm);
+      const amount = String(formData.get("donation-amount") || "").trim();
+
+      if (!amount || Number.isNaN(Number(amount)) || Number(amount) <= 0) {
+        alert("Please enter a valid donation amount.");
+        return;
+      }
+
+      const recaptchaEl = donateForm.querySelector('[data-netlify-recaptcha="true"]');
+      if (recaptchaEl && typeof grecaptcha !== "undefined") {
+        const response = grecaptcha.getResponse();
+        if (!response) {
+          alert("Please complete the reCAPTCHA.");
+          return;
+        }
+      }
+
+      const submitButton = donateForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton ? submitButton.textContent : "";
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Redirecting to secure checkout...";
+      }
+
+      const payload = {
+        firstName: formData.get("first-name"),
+        lastName: formData.get("last-name"),
+        occupation: formData.get("occupation"),
+        phone: formData.get("phone"),
+        email: formData.get("email"),
+        address1: formData.get("address-line-1"),
+        address2: formData.get("address-line-2"),
+        city: formData.get("city"),
+        state: formData.get("state-region"),
+        zip: formData.get("zip-postal"),
+        country: formData.get("country"),
+        donationAmount: amount
+      };
+
+      try {
+        const res = await fetch("/.netlify/functions/create-checkout-session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          throw new Error(data.error || "Unable to start Stripe checkout.");
+        }
+
+        if (data.url) {
+          window.location.href = data.url;
+          return;
+        }
+
+        throw new Error("Stripe checkout session URL was not returned.");
+      } catch (err) {
+        console.error("Stripe checkout error:", err);
+        alert(err.message || "There was an error connecting to Stripe.");
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText || "Submit Donation Info";
+        }
+      }
+    });
+  }
+});
