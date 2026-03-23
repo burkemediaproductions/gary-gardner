@@ -1,31 +1,31 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gary Gardner for Desert Hot Springs City Council District 1 — Delivering for DHS</title>
-  <meta name="description" content="Gary Gardner for Desert Hot Springs City Council District 1. Delivering for DHS.">
+  <title>Search the Site — Gary Gardner for Desert Hot Springs City Council District 1</title>
+  <meta name="description" content="Search the Gary Gardner for Desert Hot Springs City Council District 1 website.">
   <meta name="theme-color" content="#852d97">
   <meta name="msapplication-TileColor" content="#852d97">
-  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="robots" content="noindex,follow">
 
-  <link rel="canonical" href="https://gardnerfordhs.com/">
+  <link rel="canonical" href="https://gardnerfordhs.com/search/">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Gary Gardner for Desert Hot Springs City Council District 1 — Delivering for DHS">
-  <meta property="og:description" content="Gary Gardner for Desert Hot Springs City Council District 1. Delivering for DHS.">
+  <meta property="og:title" content="Search the Site — Gary Gardner for Desert Hot Springs City Council District 1">
+  <meta property="og:description" content="Search the Gary Gardner campaign website.">
   <meta property="og:site_name" content="Gary Gardner for Desert Hot Springs City Council District 1">
-  <meta property="og:url" content="https://gardnerfordhs.com/">
+  <meta property="og:url" content="https://gardnerfordhs.com/search/">
   <meta property="og:image" content="https://gardnerfordhs.com/assets/img/social/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Gary Gardner for Desert Hot Springs City Council District 1">
+  <meta property="og:image:alt" content="Search the Gary Gardner campaign website">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Gary Gardner for Desert Hot Springs City Council District 1 — Delivering for DHS">
-  <meta name="twitter:description" content="Gary Gardner for Desert Hot Springs City Council District 1. Delivering for DHS.">
+  <meta name="twitter:title" content="Search the Site — Gary Gardner for Desert Hot Springs City Council District 1">
+  <meta name="twitter:description" content="Search the Gary Gardner campaign website.">
   <meta name="twitter:image" content="https://gardnerfordhs.com/assets/img/social/og-image.jpg">
-  <meta name="twitter:image:alt" content="Gary Gardner for Desert Hot Springs City Council District 1">
+  <meta name="twitter:image:alt" content="Search the Gary Gardner campaign website">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,34 +39,157 @@
   <link rel="mask-icon" href="/assets/img/favicon/safari-pinned-tab.svg" color="#852d97">
   <link rel="manifest" href="/assets/img/favicon/site.webmanifest">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "PoliticalCandidate",
-    "name": "Gary Gardner",
-    "url": "https://gardnerfordhs.com/",
-    "email": "gardnerfordhs@gmail.com",
-    "telephone": "+1-206-669-0548",
-    "image": "https://gardnerfordhs.com/assets/img/social/og-image-square.jpg",
-    "address": {
-      "@type": "PostalAddress",
-      "postOfficeBoxNumber": "PO Box 333",
-      "addressLocality": "Desert Hot Springs",
-      "postalCode": "92240",
-      "addressRegion": "CA",
-      "addressCountry": "US"
-    },
-    "sameAs": [
-      "https://www.facebook.com/gardnerfordhs",
-      "https://www.instagram.com/gardnerfordhs/"
-	  "https://www.youtube.com/@gardnerfordhs"
-    ]
-  }
-  </script>
-</head>
-<body class="">
+  <style>
+    .search-page-card {
+      max-width: 980px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      border: 1px solid rgba(0,0,0,.05);
+    }
 
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    .search-page-intro {
+      max-width: 46rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-page-form {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-page-form input[type="search"] {
+      flex: 1 1 320px;
+      min-height: 58px;
+      padding: .95rem 1rem;
+      border-radius: 18px;
+      border: 1px solid #d6d9e1;
+      background: #fff;
+    }
+
+    .search-page-form button {
+      min-height: 58px;
+      padding: .95rem 1.25rem;
+      border-radius: 18px;
+      border: 0;
+      background: var(--purple);
+      color: #fff;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .search-status {
+      margin: .5rem 0 1.5rem;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .search-results {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .search-result {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: linear-gradient(135deg, rgba(133,45,151,.05), rgba(23,169,225,.07));
+      border: 1px solid rgba(0,0,0,.05);
+      border-radius: 18px;
+      padding: 1rem 1rem 1.1rem;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .search-result:hover,
+    .search-result:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: rgba(133,45,151,.18);
+    }
+
+    .search-result-title {
+      display: block;
+      margin: 0 0 .35rem;
+      font-family: var(--display);
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      color: var(--purple);
+      font-size: 1.45rem;
+      line-height: 1;
+    }
+
+    .search-result-url {
+      display: block;
+      margin-bottom: .45rem;
+      color: var(--blue-deep);
+      font-size: .95rem;
+      word-break: break-word;
+    }
+
+    .search-result-desc {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    mark {
+      background: rgba(23,169,225,.18);
+      color: inherit;
+      padding: 0 .12em;
+      border-radius: .15em;
+    }
+
+    .search-empty {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.05);
+      border-radius: 18px;
+      padding: 1.2rem;
+      color: var(--muted);
+    }
+
+    .search-suggestions {
+      margin-top: 1rem;
+      display: grid;
+      gap: .85rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .search-suggestion-card {
+      background: linear-gradient(135deg, rgba(133,45,151,.06), rgba(23,169,225,.08));
+      border: 1px solid rgba(0,0,0,.05);
+      border-radius: 18px;
+      padding: 1rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .search-suggestion-card strong {
+      display: block;
+      margin-bottom: .25rem;
+      font-family: var(--display);
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      color: var(--purple);
+      font-size: 1.2rem;
+    }
+
+    .search-suggestion-card span {
+      color: var(--muted);
+    }
+
+    @media (max-width: 760px) {
+      .search-suggestions {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to content</a>
 		<header class="site-header">
 		  <div class="header-inner">
 			<a class="brand" href="/" aria-label="Gary Gardner for Desert Hot Springs City Council home">
@@ -161,104 +284,45 @@
 			</li>
 		  </ul>
 		  <div class="nav-mountains" aria-hidden="true"></div>
-		</nav>
-    
-<main id="main-content">
- <section class="hero hero--video" aria-labelledby="hero-title">
-    <div class="hero-video-wrap" aria-hidden="true">
-	  <video
-		class="hero-video"
-		autoplay
-		muted
-		loop
-		playsinline
-		preload="metadata"
-		poster="/assets/video/GaryGardnerWebsiteHero.jpg"
-	  >
-		<source src="/assets/video/GaryGardnerWebsiteHero.mp4" type="video/mp4">
-	  </video>
-	</div>
-    <div class="hero-content">
-      <h1 id="hero-title" class="hero-title reveal">Gary Gardner for <br/>Desert Hot Springs <br/>City Council District 1</h1>
-      <p class="hero-subtitle reveal reveal--delay-1">Councilman Gary Gardner is working to keep our city safe, programs maintained, business friendly and fiscally responsible.</p>
-      <div class="hero-actions reveal reveal--delay-2">
-        <a class="btn btn--primary" href="#about-home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 10.5h4V21H2v-10.5Zm7 10.5h8.7c1.2 0 2.2-.8 2.5-2l1.5-6.1A2.6 2.6 0 0 0 19.1 10H14V6.4c0-1.2-.7-2.2-1.8-2.7l-.4-.2-4 6.1H9V21Z"/></svg><span>Gardner for DHS</span></a>
-        <a class="btn btn--secondary" href="/who-is-gary/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v12h16V6H4Zm4 2.1a3.4 3.4 0 1 1 0 6.8 3.4 3.4 0 0 1 0-6.8Zm6.6.9H18v1.8h-3.4V9Zm0 3H18v1.8h-3.4V12Zm-9.1 4.2h5A3.6 3.6 0 0 0 8 15c-1.1 0-2.1.4-2.5 1.2Z"/></svg><span>Who is Gary?</span></a>
-        <a class="btn btn--secondary" href="/support/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21.3 10.6 20C5.2 15 2 12.1 2 8.5A4.5 4.5 0 0 1 6.5 4C8.3 4 10 4.8 11 6.1 12 4.8 13.7 4 15.5 4A4.5 4.5 0 0 1 20 8.5c0 3.6-3.2 6.5-8.6 11.5L12 21.3Z"/></svg><span>Endorse</span></a>
+		</nav><main id="main-content">
+    <section class="hero hero--page hero--purple" aria-labelledby="hero-title" style="padding-bottom:95px">
+      <div class="hero-content">
+        <h1 id="hero-title" class="hero-title">Search the Site</h1>
+        <p class="hero-subtitle">
+          Search campaign pages, media, accomplishments, and key information across the site.
+        </p>
       </div>
-    </div>
-    <div class="hero-chevron"><a href="#about-home" aria-label="Scroll to content"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 16.4-7-7 1.4-1.4 5.6 5.6 5.6-5.6L19 9.4l-7 7Z"/></svg></a></div>
-  </section>
-  <div class="mountain-divider white-mountain" aria-hidden="true"></div>
-   <section class="section section--white" id="about-home">
-   
-   <div class="container reveal section-video-intro">
-	  <div class="video-embed-card">
-		<div class="video-embed-frame">
-		  <iframe
-			src="https://www.youtube.com/embed/BSwqpe7Hvi8?si=_KlMmWgnjHrK2zZ7"
-			title="Gary Gardner campaign kickoff invitation video"
-			loading="lazy"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			allowfullscreen
-			referrerpolicy="strict-origin-when-cross-origin">
-		  </iframe>
-		</div>
+    </section>
 
-		<div class="video-intro-copy">
-		  <h2 class="video-intro-title">Campaign Kickoff Invitation</h2>
-		  <p>
-			Gary Gardner invites residents to join his campaign kickoff at Delicias on Pearson Boulevard on Wednesday, April 29th at 6 p.m. The video highlights his reelection campaign, reflects on accomplishments from the last four years, and encourages the community to come share ideas about the future of Desert Hot Springs.
-		  </p>
-		</div>
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.2189044201523!2d-116.51065498875124!3d33.96121262241975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80db21f732c08a4d%3A0x1c16c60a30691f6f!2sDelicias%20Mexican%20Cuisine!5e0!3m2!1sen!2sus!4v1774055123242!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-	  </div>
-	</div>
-   
-    <div class="container grid-2">
-      <div class="copy reveal">
-        <h2 class="section-heading section-heading--purple">Gardner for DHS</h2>
-        <p>Desert Hot Springs is a special place. There is no city quite like it. I have been honored to serve you on the City Council representing District 1 – the area of the city south of Pierson Blvd., and west of Palm Dr. My primary goal has always been to make Desert Hot Springs the best city to live in here in the desert, and to improve the lives of all of our residents across the city. I’ve worked tirelessly towards those goals, and we’ve made tremendous progress.</p>
-		<p>Desert Hot Springs is a vibrant and growing community, we attract residents and visitors from all over who come to enjoy our unique city -- it’s world-renowned hot mineral waters and spas, our access to outdoor recreation, our lower cost housing, and now the city in the desert with the lowest crime rate.</p>
-		<p>Of course there’s still much to be done, we are always striving to make the city better. With your help, I’ll keep working towards that goal. I hope to once again earn your vote in 2026.</p>
+    <div class="mountain-divider white-mountain" aria-hidden="true"></div>
+
+    <section class="section section--white">
+      <div class="container">
+        <div class="search-page-card reveal">
+          <div class="search-page-intro copy">
+            <p>
+              Enter a keyword below to search the site. Try terms like <strong>Gary</strong>, <strong>issues</strong>, <strong>media</strong>, <strong>support</strong>, <strong>accomplishments</strong>, or <strong>contact</strong>.
+            </p>
+          </div>
+
+          <form class="search-page-form" id="site-search-form" action="/search/" method="GET" role="search">
+            <label for="search-query" class="sr-only">Search the site</label>
+            <input
+              type="search"
+              id="search-query"
+              name="q"
+              placeholder="Search the site..."
+              autocomplete="off"
+            >
+            <button type="submit">Search</button>
+          </form>
+
+          <div id="search-status" class="search-status" aria-live="polite"></div>
+          <div id="search-results" class="search-results"></div>
+        </div>
       </div>
-		<figure class="inline-media reveal">
-		  <video
-			class="inline-media-video"
-			autoplay
-			muted
-			loop
-			playsinline
-			preload="metadata"
-			poster="/assets/video/FireStationBeforeAfter.jpg"
-			aria-label="Before and after video of Gary Gardner at the Fire Station 98 site, beginning with the 2022 campaign sign on the future station lot and transitioning to the completed fire station."
-		  >
-			<source src="/assets/video/FireStationBeforeAfter.mp4" type="video/mp4">
-		  </video>
-		  <figcaption class="sr-only">
-			Before and after video of Gary Gardner at the Fire Station 98 site, beginning with the 2022 campaign sign on the future station lot and transitioning to the completed fire station.
-		  </figcaption>
-		</figure>
-   </section>
- 
-<!--  <div class="mountain-divider" aria-hidden="true"></div>
-
-  <section class="section section--blue">
-    <div class="container">
-      <ul class="bullets reveal reveal--delay-1">
-        <li>Since 2019 we’ve seen our city – for the first time in history – be in a secure financial position, with more than twelve million dollars in reserves for a rainy day.</li>
-        <li>Since 2019 we’ve moved into a brand new one-stop-shopping City Hall that was built without affecting our budget by refinancing old bonds and taking those savings to build the new City Hall.</li>
-        <li>Since 2019 we’ve developed a culture of “Can-Do” with our city staff, empowering them to find ways to get things done with the full support of the City Council.</li>
-        <li>Since 2019 we’ve seen a renaissance in our Hotel and Spa industry, with several new properties – including the stunning Azure Palms Hot Springs opening. We’ll continue to see more of that with an innovative “Spa Revitalization” program that Councilmember Pye and I developed that will encourage further investments in dilapidated and unused spas in our city.</li>
-        <li>Since 2019 we’ve improved our parks and our outdoor recreation, opening new trails, including the spectacular Long Canyon Trail into Joshua Tree National Park. All this year you’ll continue to see improvements in our parks across the city.</li>
-        <li>Since 2019 we’ve doubled down on our efforts to keep the city clean, with programs of volunteers cleaning vacant lots, and increasing our fines for illegal dumping.</li>
-        <li>Since 2019 we’ve expanded our police department, and our crime rate has dropped significantly – Desert Hot Springs' crime rate is now lower than Palm Springs, Cathedral City, and Indio.</li>
-        <li>Since 2019 we’ve nearly doubled our cannabis businesses in the city, employing hundreds of Desert Hot Springs residents and generating millions in tax revenue to keep our city healthy.</li>
-      </ul>
-      <p style="margin-top:1.6rem"><a class="btn btn--primary" href="/who-is-gary/">Learn More About Me</a></p>
-    </div>
-  </section> -->
-</main>
+    </section>
+  </main>
 
 <div class="mountain-divider purple-mountain" aria-hidden="true"></div>
 

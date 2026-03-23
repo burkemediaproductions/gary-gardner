@@ -708,11 +708,14 @@ input:focus, textarea:focus, .menu-button:focus-visible, .btn:focus-visible, .na
 .footer-nav {
   display: grid;
   gap: 1.5rem;
+  align-items: start;
 }
 
 .footer-nav-group {
   display: grid;
   gap: .7rem;
+  align-content: start;
+  align-items: start;
 }
 
 .footer-subheading {
@@ -730,6 +733,7 @@ input:focus, textarea:focus, .menu-button:focus-visible, .btn:focus-visible, .na
   padding: 0;
   display: grid;
   gap: .45rem;
+  align-content: start;
 }
 
 .footer-links-list a {
@@ -1263,4 +1267,89 @@ input:focus, textarea:focus, .menu-button:focus-visible, .btn:focus-visible, .na
 
 .custom-amount-wrap[hidden] {
   display: none !important;
+}
+
+/* 404 HERO */
+.hero--404::after {
+  background-image:
+    linear-gradient(180deg, rgba(8,12,24,.05), rgba(8,12,24,.5)),
+    url("/assets/img/404.jpg");
+   background-position: center 25%;
+}
+
+.search-404 {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: left;
+}
+
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 420px;
+  width: 100%;
+}
+
+.search-form input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 1rem;
+}
+
+.search-form button {
+  padding: 0.75rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  background: #852d97;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.search-form button:hover {
+  background: #6d247a;
+}
+
+.site-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.site-credit-label {
+  color: var(--white);
+}
+
+.site-credit-link {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.site-credit-logo {
+  display: block;
+  height: auto;
+  max-width: 180px;
+  width: 100%;
+  opacity: 0.96;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.site-credit-link:hover .site-credit-logo,
+.site-credit-link:focus-visible .site-credit-logo {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.site-credit-link:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+  border-radius: 6px;
 }
