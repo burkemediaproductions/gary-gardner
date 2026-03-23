@@ -243,10 +243,73 @@
                 <input id="donate-country" name="country" type="text" autocomplete="country-name">
               </div>
 
-              <div class="form-field form-field--full">
-                <label for="donate-amount">Donation Amount*</label>
-                <input id="donate-amount" name="donation-amount" type="text" inputmode="decimal" required>
-              </div>
+	<div class="form-field form-field--full">
+	  <fieldset class="donation-options">
+		<legend>Choose Donation Amount*</legend>
+
+		<div class="donation-grid">
+		  <label class="donation-pill">
+			<input type="radio" name="donation-choice" value="25" required>
+			<span>$25</span>
+		  </label>
+
+		  <label class="donation-pill">
+			<input type="radio" name="donation-choice" value="50">
+			<span>$50</span>
+		  </label>
+
+		  <label class="donation-pill">
+			<input type="radio" name="donation-choice" value="75">
+			<span>$75</span>
+		  </label>
+
+		  <label class="donation-pill">
+			<input type="radio" name="donation-choice" value="100">
+			<span>$100</span>
+		  </label>
+
+		  <label class="donation-pill">
+			<input type="radio" name="donation-choice" value="200">
+			<span>$200</span>
+		  </label>
+
+		  <label class="donation-pill">
+			<input type="radio" name="donation-choice" value="500">
+			<span>$500</span>
+		  </label>
+
+		  <label class="donation-pill">
+			<input type="radio" name="donation-choice" value="1000">
+			<span>$1000</span>
+		  </label>
+
+		  <label class="donation-pill">
+			<input type="radio" name="donation-choice" value="2000">
+			<span>$2000</span>
+		  </label>
+
+		  <label class="donation-pill">
+			<input type="radio" name="donation-choice" value="other">
+			<span>Other</span>
+		  </label>
+		</div>
+	  </fieldset>
+	</div>
+
+	<div class="form-field form-field--full custom-amount-wrap" id="custom-amount-wrap" hidden>
+	  <label for="donate-amount-other">Donation Amount*</label>
+	  <div class="money-input">
+		<span class="money-input__symbol">$</span>
+		<input
+		  id="donate-amount-other"
+		  name="donation-amount-other"
+		  type="text"
+		  inputmode="decimal"
+		  placeholder="Enter donation amount">
+	  </div>
+	</div>
+
+	<input type="hidden" id="donation-amount-final" name="donation-amount" value="">
 
               <div class="form-field form-field--full">
                 <div data-netlify-recaptcha="true"></div>
@@ -257,14 +320,16 @@
               </div>
             </div>
           </form>
-        </div>
 
-        <div class="copy reveal reveal--delay-3" style="max-width: 42rem; margin-top: 2rem;">
-          <h2 class="section-heading section-heading--purple" style="font-size:clamp(1.8rem,3vw,2.8rem);">Mailing Address and Contribution Information</h2>
-          <p>Gardner for DHS 2026<br>Box 333<br>Desert Hot Springs, CA 92240</p>
-          <p>FPPC: 1405627<br>EIN: 82-5194248</p>
-        </div>
+		<div class="check-by-mail-note">
+		  <strong>Prefer to mail a check?</strong><br>
+		  <p>Please make checks payable to Gary Gardner for Desert Hot Springs City Council 2026 and mail to:<br>
+		  PO Box 333<br>
+		  Desert Hot Springs, CA 92240</p>
+		  <p>FPPC: 1405627<br>EIN: 82-5194248</p>
+		</div>
       </div>
+	 </div>
     </section>
   </main>
 
