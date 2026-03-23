@@ -1,33 +1,44 @@
-const Stripe = require('stripe');
+const Stripe = require("stripe");
 
 exports.handler = async (event) => {
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-    const body = JSON.parse(event.body || '{}');
+    const body = JSON.parse(event.body || "{}");
 
     const amount = Math.round(parseFloat(body.donationAmount) * 100);
 
     if (!amount || amount < 100) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: 'Invalid donation amount.' })
+        body: JSON.stringify({ error: "Invalid donation amount." })
       };
     }
 
+    const proto =
+      event.headers["x-forwarded-proto"] ||
+      event.headers["X-Forwarded-Proto"] ||
+      "https";
+
+    const host =
+      event.headers["x-forwarded-host"] ||
+      event.headers["host"];
+
+    const baseUrl = `${proto}://${host}`;
+
     const session = await stripe.checkout.sessions.create({
-      mode: 'payment',
-      success_url: 'https://gardnerfordhs.com/donate/thank-you/?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: 'https://gardnerfordhs.com/donate/',
-      customer_email: body.email,
-      billing_address_collection: 'required',
+      mode: "payment",
+      success_url: `${baseUrl}/donate/thank-you/?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${baseUrl}/donate/`,
+      customer_email: body.email || undefined,
+      billing_address_collection: "required",
       line_items: [
         {
           price_data: {
-            currency: 'usd',
+            currency: "usd",
             product_data: {
-              name: 'Campaign Donation',
-              description: 'Gary Gardner for Desert Hot Springs City Council District 1'
+              name: "Campaign Donation",
+              description: "Gary Gardner for Desert Hot Springs City Council District 1"
             },
             unit_amount: amount
           },
@@ -35,16 +46,18 @@ exports.handler = async (event) => {
         }
       ],
       metadata: {
-        first_name: body.firstName || '',
-        last_name: body.lastName || '',
-        occupation: body.occupation || '',
-        phone: body.phone || '',
-        address_1: body.address1 || '',
-        address_2: body.address2 || '',
-        city: body.city || '',
-        state: body.state || '',
-        zip: body.zip || '',
-        country: body.country || ''
+        first_name: body.firstName || "",
+        last_name: body.lastName || "",
+        occupation: body.occupation || "",
+        phone: body.phone || "",
+        email: body.email || "",
+        address_1: body.address1 || "",
+        address_2: body.address2 || "",
+        city: body.city || "",
+        state: body.state || "",
+        zip: body.zip || "",
+        country: body.country || "",
+        donation_amount: String(body.donationAmount || "")
       }
     });
 
@@ -53,10 +66,12 @@ exports.handler = async (event) => {
       body: JSON.stringify({ url: session.url })
     };
   } catch (error) {
+    console.error("create-checkout-session error:", error);
+
     return {
       statusCode: 500,
       body: JSON.stringify({
-        error: error.message || 'Server error'
+        error: error.message || "Server error"
       })
     };
   }
