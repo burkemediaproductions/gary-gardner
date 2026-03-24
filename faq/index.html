@@ -39,73 +39,135 @@
   <link rel="mask-icon" href="/assets/img/favicon/safari-pinned-tab.svg" color="#852d97">
   <link rel="manifest" href="/assets/img/favicon/site.webmanifest">
 
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-
-    {
-      "@type": "PoliticalCandidate",
-      "name": "Gary Gardner",
-      "url": "https://gardnerfordhs.com/",
-      "email": "gardnerfordhs@gmail.com",
-      "telephone": "+1-206-669-0548",
-      "image": "https://gardnerfordhs.com/assets/img/social/og-image-square.jpg",
-      "jobTitle": "Candidate for Desert Hot Springs City Council District 1",
-      "address": {
-        "@type": "PostalAddress",
-        "postOfficeBoxNumber": "PO Box 333",
-        "addressLocality": "Desert Hot Springs",
-        "addressRegion": "CA",
-        "postalCode": "92240",
-        "addressCountry": "US"
-      },
-      "sameAs": [
-        "https://www.facebook.com/gardnerfordhs",
-        "https://www.instagram.com/gardnerfordhs/",
-        "https://www.youtube.com/@gardnerfordhs"
-      ]
-    },
-
-    {
-      "@type": "Organization",
-      "name": "Gary Gardner for DHS",
-      "url": "https://gardnerfordhs.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://gardnerfordhs.com/assets/img/social/og-image-square.jpg"
-      },
-      "sameAs": [
-        "https://www.facebook.com/gardnerfordhs",
-        "https://www.instagram.com/gardnerfordhs/",
-        "https://www.youtube.com/@gardnerfordhs"
-      ]
-    },
-
-    {
-      "@type": "WebSite",
-      "url": "https://gardnerfordhs.com/",
-      "name": "Gary Gardner for DHS"
-    },
-
-    {
-      "@type": "WebPage",
-      "name": "Gary Gardner for Desert Hot Springs City Council District 1",
-      "url": "https://gardnerfordhs.com/",
-      "description": "Gary Gardner is running for Desert Hot Springs City Council District 1. Learn about his vision, priorities, and how to support the campaign.",
-      "inLanguage": "en-US"
-    },
-
-    {
-      "@type": "ImageObject",
-      "name": "Gary Gardner Campaign Image",
-      "url": "https://gardnerfordhs.com/assets/img/social/og-image-square.jpg"
-    }
-
-  ]
-}
-</script>
-</head>
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+		{
+		  "@type": "PoliticalCandidate",
+		  "@id": "https://gardnerfordhs.com/#candidate",
+		  "name": "Gary Gardner",
+		  "url": "https://gardnerfordhs.com/",
+		  "email": "gardnerfordhs@gmail.com",
+		  "telephone": "+1-206-669-0548",
+		  "image": "https://gardnerfordhs.com/assets/img/social/og-image-square.jpg",
+		  "jobTitle": "Candidate for Desert Hot Springs City Council District 1",
+		  "address": {
+			"@type": "PostalAddress",
+			"postOfficeBoxNumber": "PO Box 333",
+			"addressLocality": "Desert Hot Springs",
+			"addressRegion": "CA",
+			"postalCode": "92240",
+			"addressCountry": "US"
+		  },
+		  "sameAs": [
+			"https://www.facebook.com/gardnerfordhs",
+			"https://www.instagram.com/gardnerfordhs/",
+			"https://www.youtube.com/@gardnerfordhs"
+		  ]
+		},
+		{
+		  "@type": "Organization",
+		  "@id": "https://gardnerfordhs.com/#organization",
+		  "name": "Gary Gardner for DHS",
+		  "url": "https://gardnerfordhs.com/",
+		  "logo": {
+			"@type": "ImageObject",
+			"url": "https://gardnerfordhs.com/assets/img/social/og-image-square.jpg"
+		  },
+		  "sameAs": [
+			"https://www.facebook.com/gardnerfordhs",
+			"https://www.instagram.com/gardnerfordhs/",
+			"https://www.youtube.com/@gardnerfordhs"
+		  ]
+		},
+		{
+		  "@type": "WebSite",
+		  "@id": "https://gardnerfordhs.com/#website",
+		  "url": "https://gardnerfordhs.com/",
+		  "name": "Gary Gardner for DHS",
+		  "publisher": {
+			"@id": "https://gardnerfordhs.com/#organization"
+		  }
+		}
+	  ]
+	}
+	</script>
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@graph": [
+		{
+		  "@type": "WebPage",
+		  "@id": "https://gardnerfordhs.com/faq/#webpage",
+		  "url": "https://gardnerfordhs.com/faq/",
+		  "name": "FAQ — Gary Gardner for Desert Hot Springs City Council District 1",
+		  "description": "Frequently asked questions about Gary Gardner, his priorities, accomplishments, and campaign for Desert Hot Springs City Council District 1.",
+		  "inLanguage": "en-US",
+		  "isPartOf": {
+			"@id": "https://gardnerfordhs.com/#website"
+		  },
+		  "about": {
+			"@id": "https://gardnerfordhs.com/#candidate"
+		  }
+		},
+		{
+		  "@type": "FAQPage",
+		  "@id": "https://gardnerfordhs.com/faq/#faqpage",
+		  "mainEntity": [
+			{
+			  "@type": "Question",
+			  "name": "Who is Gary Gardner?",
+			  "acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Gary Gardner is a member of the Desert Hot Springs City Council representing District 1. He was first elected in 2018 and re-elected in 2022, and has served on the Planning Commission and chaired the Human Rights Committee."
+			  }
+			},
+			{
+			  "@type": "Question",
+			  "name": "What district does Gary Gardner represent?",
+			  "acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Gary Gardner represents District 1 in Desert Hot Springs, including the area south of Pierson Boulevard and west of Palm Drive."
+			  }
+			},
+			{
+			  "@type": "Question",
+			  "name": "What are Gary Gardner’s priorities?",
+			  "acceptedAnswer": {
+				"@type": "Answer",
+				"text": "His priorities include public safety, responsible growth, tourism, fiscal responsibility, parks and conservation, and making Desert Hot Springs more attractive to businesses, retail, and restaurants."
+			  }
+			},
+			{
+			  "@type": "Question",
+			  "name": "What has Gary Gardner helped accomplish?",
+			  "acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Major accomplishments highlighted on the site include lower crime rates, full police staffing, a new fire station, downtown murals and events, Hacienda Avenue improvements, Eagle Sports Park, tourism support, jobs from new employers, and trail improvements."
+			  }
+			},
+			{
+			  "@type": "Question",
+			  "name": "How can I support Gary Gardner’s campaign?",
+			  "acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Supporters can get involved by endorsing the campaign, donating, following on social media, attending events, and sharing information with other Desert Hot Springs residents."
+			  }
+			},
+			{
+			  "@type": "Question",
+			  "name": "Why is Gary Gardner running again?",
+			  "acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Gary Gardner is running for re-election to continue the momentum in Desert Hot Springs and keep building on progress in safety, infrastructure, economic growth, tourism, and quality of life."
+			  }
+			}
+		  ]
+		}
+	  ]
+	}
+	</script>
 <body class="">
 
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -205,55 +267,149 @@
 		  <div class="nav-mountains" aria-hidden="true"></div>
 		</nav><main id="main-content">
 		
-	<section class="hero hero--image hero--who-is-gary" aria-labelledby="who-hero">
-	  <div class="hero-content">
-		<h1 id="who-hero" class="hero-title reveal">FAQ</h1>
-		<p class="hero-subtitle reveal reveal--delay-1">
-		  Learn more about Gary Gardner, his background, and his work serving Desert Hot Springs City Council District 1.
-		</p>
-	  </div>
-	</section>
-<main>
+	<section class="hero hero--page hero--purple" aria-labelledby="faq-hero">
+  <div class="hero-content">
+    <h1 id="faq-hero" class="hero-title reveal">Frequently Asked Questions</h1>
+    <p class="hero-subtitle reveal reveal--delay-1">
+      Get quick answers to common questions about Gary Gardner, his priorities, and how you can get involved in building a stronger Desert Hot Springs.
+    </p>
+  </div>
+</section>
+
 <section class="section section--white">
-  <div class="container copy" style="max-width: 800px;">
+  <div class="container">
+    <div class="copy reveal" style="max-width: 860px; margin: 0 auto 2rem;">
+      <h2 class="section-heading section-heading--purple">What Residents Are Asking</h2>
+      <p>
+		We’ve gathered answers to some of the most common questions about Gary Gardner’s leadership, priorities, and campaign. If you don’t see your question here, feel free to reach out — we’re always happy to connect.
+      </p>
+    </div>
 
-    <h1 class="section-heading section-heading--purple">Frequently Asked Questions</h1>
+    <div class="faq-accordion reveal" style="max-width: 860px; margin: 0 auto;">
+      <details class="faq-item" open>
+        <summary>Who is Gary Gardner?</summary>
+        <div class="faq-answer">
+          <p>
+            Gary Gardner is a member of the Desert Hot Springs City Council representing District 1.
+            He was first elected in 2018 and re-elected in 2022. He has also served on the Planning
+            Commission and chaired the Human Rights Committee.
+            <a href="/who-is-gary/">Learn more about Gary.</a>
+          </p>
+        </div>
+      </details>
 
-    <h2>Who is Gary Gardner?</h2>
-    <p>
-      Gary Gardner is a member of the Desert Hot Springs City Council representing District 1. He was first elected in 2018 and re-elected in 2022, and has served the community through roles such as the Planning Commission and Human Rights Committee.
-    </p>
+      <details class="faq-item">
+        <summary>What district does Gary Gardner represent?</summary>
+        <div class="faq-answer">
+          <p>
+            Gary Gardner represents District 1 in Desert Hot Springs, including the area south of
+            Pierson Boulevard and west of Palm Drive.
+          </p>
+        </div>
+      </details>
 
-    <h2>What district is Gary Gardner running in?</h2>
-    <p>
-      Gary Gardner represents and is running for re-election in District 1 of Desert Hot Springs, which includes areas south of Pierson Blvd. and west of Palm Drive.
-    </p>
+      <details class="faq-item">
+        <summary>What are Gary Gardner’s priorities for Desert Hot Springs?</summary>
+        <div class="faq-answer">
+          <p>
+            His priorities include public safety, responsible growth, fiscal responsibility, tourism,
+            parks and conservation, and making Desert Hot Springs more attractive to businesses,
+            retail, and restaurants.
+            <a href="/the-issues/">Explore the issues and priorities.</a>
+          </p>
+        </div>
+      </details>
 
-    <h2>What are Gary Gardner’s priorities?</h2>
-    <p>
-      His priorities include maintaining public safety, supporting economic growth, strengthening tourism, improving parks and outdoor spaces, and ensuring responsible financial management for the city.
-    </p>
+      <details class="faq-item">
+        <summary>What has Gary Gardner helped accomplish?</summary>
+        <div class="faq-answer">
+          <p>
+            The campaign highlights lower crime rates, full police staffing, a new fire station,
+            downtown murals and events, Hacienda Avenue improvements, Eagle Sports Park, tourism
+            support, jobs from new employers, and trail improvements.
+            <a href="/major-accomplishments/">See major accomplishments.</a>
+          </p>
+        </div>
+      </details>
 
-    <h2>What has Gary Gardner accomplished?</h2>
-    <p>
-      Major accomplishments include lowering crime rates, expanding the police department, opening a new fire station, revitalizing downtown with murals and events, improving infrastructure, supporting tourism and local businesses, and bringing new jobs to the city.
-    </p>
+      <details class="faq-item">
+        <summary>How has Desert Hot Springs improved in recent years?</summary>
+        <div class="faq-answer">
+          <p>
+            The site describes Desert Hot Springs as one of the fastest-growing cities in the Coachella
+            Valley, with rising tourism, new housing, more jobs, stronger public safety, and
+            continued investment in infrastructure and community spaces.
+            <a href="/major-accomplishments/">Read more about recent progress.</a>
+          </p>
+        </div>
+      </details>
 
-    <h2>How has Desert Hot Springs improved?</h2>
-    <p>
-      Desert Hot Springs has seen significant progress in recent years, including economic growth, new housing developments, increased tourism, and one of the lowest crime rates in the Coachella Valley.
-    </p>
+      <details class="faq-item">
+        <summary>What is Gary Gardner’s position on public safety?</summary>
+        <div class="faq-answer">
+          <p>
+            Public safety is a core focus. The site emphasizes lower crime rates, full police staffing,
+            improved dispatch services, and new fire station investment to keep residents safe.
+            <a href="/the-issues/">Read more about public safety priorities.</a>
+          </p>
+        </div>
+      </details>
 
-    <h2>How can I support Gary Gardner’s campaign?</h2>
-    <p>
-      You can support the campaign by spreading the word, connecting on social media, attending events, and participating in community efforts.
-    </p>
+      <details class="faq-item">
+        <summary>What is Gary Gardner’s position on growth and development?</summary>
+        <div class="faq-answer">
+          <p>
+            Gary Gardner’s message emphasizes balancing responsible growth with prudent fiscal
+            management while supporting tourism, cannabis, housing, and business development.
+            <a href="/the-issues/">Read more about growth and development.</a>
+          </p>
+        </div>
+      </details>
 
-    <h2>Why is Gary Gardner running again?</h2>
-    <p>
-      Gary Gardner is running for re-election to continue building on the progress made in Desert Hot Springs and to keep improving the quality of life for residents.
-    </p>
+      <details class="faq-item">
+        <summary>What is Gary Gardner doing for parks, trails, and open space?</summary>
+        <div class="faq-answer">
+          <p>
+            The campaign highlights Eagle Sports Park, trailhead improvements, conservation work,
+            and a focus on using and protecting open space responsibly.
+            <a href="/major-accomplishments/">See parks and trails accomplishments.</a>
+          </p>
+        </div>
+      </details>
 
+      <details class="faq-item">
+        <summary>How can I support Gary Gardner’s campaign?</summary>
+        <div class="faq-answer">
+          <p>
+            You can help by endorsing the campaign, donating, following and sharing on social media,
+            and encouraging other residents to get involved.
+            <a href="/support/">Support the campaign</a> or
+            <a href="/donate/">make a donation</a>.
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How can I contact Gary Gardner’s campaign?</summary>
+        <div class="faq-answer">
+          <p>
+            You can contact the campaign by phone, email, or through the website contact page.
+            <a href="/contact/">Visit the contact page.</a>
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Why is Gary Gardner running for re-election?</summary>
+        <div class="faq-answer">
+          <p>
+            Gary Gardner’s campaign message is to keep the momentum going and continue building on
+            progress in public safety, infrastructure, economic growth, tourism, and quality of life
+            in Desert Hot Springs.
+          </p>
+        </div>
+      </details>
+    </div>
   </div>
 </section>
 </main>

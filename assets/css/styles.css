@@ -1353,3 +1353,58 @@ input:focus, textarea:focus, .menu-button:focus-visible, .btn:focus-visible, .na
   outline-offset: 4px;
   border-radius: 6px;
 }
+
+.faq-accordion {
+  display: grid;
+  gap: 1rem;
+}
+
+.faq-item {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.15rem 1.35rem;
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  color: var(--purple);
+  background: linear-gradient(135deg, rgba(133,45,151,.08), rgba(23,169,225,.08));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  flex: 0 0 auto;
+  font-size: 1.6rem;
+  line-height: 1;
+  font-weight: 800;
+  color: var(--blue-deep);
+  transition: transform .2s ease;
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+}
+
+.faq-answer {
+  padding: 0 1.35rem 1.25rem;
+}
+
+.faq-answer p:last-child {
+  margin-bottom: 0;
+}
