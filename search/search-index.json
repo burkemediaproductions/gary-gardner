@@ -2,36 +2,156 @@
   {
     "title": "Home",
     "url": "/",
-    "content": "Gary Gardner for Desert Hot Springs. Learn about Gary Gardner, his vision, priorities, and campaign updates."
+    "content": "Gary Gardner for Desert Hot Springs. Learn about Gary Gardner, his vision, priorities, and campaign updates.",
+    "keywords": [
+      "gary gardner",
+      "desert hot springs",
+      "city council",
+      "district 1",
+      "candidate",
+      "election",
+      "campaign",
+      "public safety",
+      "economic growth",
+      "community"
+    ]
   },
   {
     "title": "Support",
     "url": "/support/",
-    "content": "Support Gary Gardner by volunteering, donating, endorsing, and helping spread the word."
+    "content": "Support Gary Gardner by volunteering, donating, endorsing, and helping spread the word.",
+    "keywords": [
+      "support",
+      "volunteer",
+      "endorse",
+      "endorsement",
+      "endorse volunteer",
+      "get involved",
+      "campaign help",
+      "sign waving",
+      "canvassing",
+      "community support"
+    ]
   },
   {
     "title": "Media Archive 2022",
     "url": "/media/2022-media-archive/",
-    "content": "Browse archived news coverage, interviews, media appearances, and campaign-related press from 2022."
+    "content": "Browse archived news coverage, interviews, media appearances, and campaign-related press from 2022.",
+    "keywords": [
+      "media",
+      "press",
+      "news",
+      "coverage",
+      "interviews",
+      "articles",
+      "tv",
+      "radio",
+      "2022"
+    ]
   },
   {
     "title": "Media Archive 2019",
     "url": "/media/2019-media-archive/",
-    "content": "Browse archived media coverage and campaign-related press from 2019."
+    "content": "Browse archived media coverage and campaign-related press from 2019.",
+    "keywords": [
+      "media",
+      "press",
+      "news",
+      "coverage",
+      "interviews",
+      "articles",
+      "tv",
+      "radio",
+      "2019"
+    ]
   },
   {
     "title": "Donate",
     "url": "/donate/",
-    "content": "Contribute to Gary Gardner’s campaign and help support outreach, visibility, and community engagement."
+    "content": "Contribute to Gary Gardner’s campaign and help support outreach, visibility, and community engagement.",
+    "keywords": [
+      "donate",
+      "donation",
+      "contribute",
+      "fundraising",
+      "campaign finance",
+      "support financially",
+      "give money"
+    ]
   },
   {
     "title": "Major Accomplishments",
     "url": "/major-accomplishments/",
-    "content": "Read about Gary Gardner’s accomplishments, leadership, and service to Desert Hot Springs."
+    "content": "Read about Gary Gardner’s accomplishments, leadership, and service to Desert Hot Springs.",
+    "keywords": [
+      "accomplishments",
+      "achievements",
+      "record",
+      "results",
+      "leadership",
+      "public safety",
+      "police staffing",
+      "crime reduction",
+      "fire station",
+      "downtown murals",
+      "desert nights",
+      "tourism",
+      "veterinary services",
+      "animal hospital",
+      "homelessness",
+      "swag program",
+      "hacienda improvements",
+      "roads",
+      "sidewalks",
+      "eagle sports park",
+      "parks",
+      "chuckwalla national monument",
+      "national monument",
+      "jobs",
+      "amazon warehouse",
+      "economic growth",
+      "hiking trails",
+      "coachella valley conservation"
+    ]
+  },
+  {
+    "title": "The Issues",
+    "url": "/the-issues/",
+    "content": "Explore Gary Gardner’s priorities for Desert Hot Springs, including public safety, economic growth, tourism, traffic, parks, and quality of life.",
+    "keywords": [
+      "issues",
+      "priorities",
+      "public safety",
+      "police",
+      "crime",
+      "economic growth",
+      "jobs",
+      "tourism",
+      "traffic",
+      "infrastructure",
+      "parks",
+      "open space",
+      "conservation",
+      "city finances",
+      "budget",
+      "housing",
+      "development",
+      "retail",
+      "restaurants",
+      "cannabis industry",
+      "quality of life"
+    ]
   },
   {
     "title": "404 Page",
     "url": "/404.html",
-    "content": "Page not found. Return to the homepage, search the site, or explore key campaign pages."
+    "content": "Page not found. Return to the homepage, search the site, or explore key campaign pages.",
+    "keywords": [
+      "404",
+      "not found",
+      "missing page",
+      "error",
+      "broken link"
+    ]
   }
 ]

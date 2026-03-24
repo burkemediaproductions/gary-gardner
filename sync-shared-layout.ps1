@@ -30,6 +30,16 @@ if (-not $footerMatch.Success) {
 
 $sharedFooter = $footerMatch.Value.TrimEnd()
 
+# Extract schema block from homepage head
+$schemaPattern = '(?s)<script\s+type="application/ld\+json">\s*.*?\s*</script>'
+$schemaMatch = [regex]::Match($sourceHtml, $schemaPattern)
+
+if (-not $schemaMatch.Success) {
+    throw "Could not extract schema block from root index.html"
+}
+
+$sharedSchema = $schemaMatch.Value.TrimEnd()
+
 # All other index.html files except root homepage
 $targetFiles = Get-ChildItem -Path $rootDir -Recurse -Filter "index.html" |
     Where-Object { $_.FullName -ne $sourceFile }
@@ -63,6 +73,27 @@ foreach ($file in $targetFiles) {
         Write-Host "Skipped header sync (pattern not found): $($file.FullName)" -ForegroundColor Red
     }
 
+    # Replace existing JSON-LD schema block, or insert it before </head>
+    if ($html -match $schemaPattern) {
+        $html = [regex]::Replace(
+            $html,
+            $schemaPattern,
+            $sharedSchema,
+            1
+        )
+    }
+    elseif ($html -match '</head>') {
+        $html = [regex]::Replace(
+            $html,
+            '</head>',
+            "`r`n  " + $sharedSchema + "`r`n</head>",
+            1
+        )
+    }
+    else {
+        Write-Host "Skipped schema sync (no </head> tag found): $($file.FullName)" -ForegroundColor Red
+    }
+
     # Replace everything after </main> with shared footer/tail
     if ($html -match '(?s)</main>.*?</html>\s*') {
         $html = [regex]::Replace(
@@ -85,4 +116,4 @@ foreach ($file in $targetFiles) {
 }
 
 Write-Host ""
-Write-Host "Done. Shared header/footer synced from root index.html." -ForegroundColor Cyan
+Write-Host "Done. Shared header, schema, and footer synced from root index.html." -ForegroundColor Cyan
