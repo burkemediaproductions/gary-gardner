@@ -606,7 +606,7 @@ main { display: block; }
 .section--blue .bullets li::before {
 background: var(--white);
 }
-.supporters-list { display: grid; gap: 1rem; margin-top: 2rem; }
+.Endorsements-list { display: grid; gap: 1rem; margin-top: 2rem; }
 .supporter { border-left: 6px solid var(--purple); padding-left: 1rem; }
 .supporter-name {
   margin: 0; font-family: var(--display); text-transform: uppercase; color: var(--purple); letter-spacing: .03em;
@@ -808,10 +808,10 @@ input:focus, textarea:focus, .menu-button:focus-visible, .btn:focus-visible, .na
     url("/assets/img/the-issues.jpg");
 }
 
-.hero--supporters::after {
+.hero--Endorsements::after {
   background-image:
     linear-gradient(180deg, rgba(8,12,24,.22), rgba(8,12,24,.58)),
-    url("/assets/img/supporters.jpg");
+    url("/assets/img/Endorsements.jpg");
 }
 
 @media (min-width: 961px) {
@@ -836,7 +836,7 @@ input:focus, textarea:focus, .menu-button:focus-visible, .btn:focus-visible, .na
 .hero--image,
 .hero--who-is-gary,
 .hero--the-issues,
-.hero--supporters,
+.hero--Endorsements,
 .hero--contact,
 .hero--links-resources,
 .hero--endorse,
@@ -852,7 +852,7 @@ input:focus, textarea:focus, .menu-button:focus-visible, .btn:focus-visible, .na
   .hero--image,
   .hero--who-is-gary,
   .hero--the-issues,
-  .hero--supporters,
+  .hero--Endorsements,
   .hero--contact,
   .hero--links-resources,
   .hero--endorse,
@@ -869,7 +869,7 @@ input:focus, textarea:focus, .menu-button:focus-visible, .btn:focus-visible, .na
   .hero--image,
   .hero--who-is-gary,
   .hero--the-issues,
-  .hero--supporters,
+  .hero--Endorsements,
   .hero--contact,
   .hero--links-resources,
   .hero--endorse,

@@ -3,29 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Endorse &amp; Volunteer — Gary Gardner for Desert Hot Springs City Council District 1</title>
-  <meta name="description" content="Endorse Gary Gardner for Desert Hot Springs City Council District 1 or volunteer to help the campaign.">
+  <title>Support Gary Gardner â€” Donate, Endorse, or Volunteer</title>
+  <meta name="description" content="Support Gary Gardner for Desert Hot Springs City Council District 1 by donating, endorsing, volunteering, or any combination of the three.">
   <meta name="theme-color" content="#852d97">
   <meta name="msapplication-TileColor" content="#852d97">
   <meta name="robots" content="index,follow,max-image-preview:large">
 
-  <link rel="canonical" href="https://gardnerfordhs.com/endorse/">
+  <link rel="canonical" href="https://gardnerfordhs.com/support/">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Endorse &amp; Volunteer — Gary Gardner for Desert Hot Springs City Council District 1">
-  <meta property="og:description" content="Endorse Gary Gardner for Desert Hot Springs City Council District 1 or volunteer to help the campaign.">
+  <meta property="og:title" content="Support Gary Gardner â€” Donate, Endorse, or Volunteer">
+  <meta property="og:description" content="Support Gary Gardner for Desert Hot Springs City Council District 1 by donating, endorsing, volunteering, or any combination of the three.">
   <meta property="og:site_name" content="Gary Gardner for Desert Hot Springs City Council District 1">
-  <meta property="og:url" content="https://gardnerfordhs.com/endorse/">
+  <meta property="og:url" content="https://gardnerfordhs.com/support/">
   <meta property="og:image" content="https://gardnerfordhs.com/assets/img/social/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Endorse and Volunteer — Gary Gardner for Desert Hot Springs City Council District 1">
+  <meta property="og:image:alt" content="Support Gary Gardner â€” Donate, Endorse, or Volunteer">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Endorse &amp; Volunteer — Gary Gardner for Desert Hot Springs City Council District 1">
-  <meta name="twitter:description" content="Endorse Gary Gardner for Desert Hot Springs City Council District 1 or volunteer to help the campaign.">
+  <meta name="twitter:title" content="Support Gary Gardner â€” Donate, Endorse, or Volunteer">
+  <meta name="twitter:description" content="Support Gary Gardner for Desert Hot Springs City Council District 1 by donating, endorsing, volunteering, or any combination of the three.">
   <meta name="twitter:image" content="https://gardnerfordhs.com/assets/img/social/og-image.jpg">
-  <meta name="twitter:image:alt" content="Endorse and Volunteer — Gary Gardner for Desert Hot Springs City Council District 1">
+  <meta name="twitter:image:alt" content="Support Gary Gardner â€” Donate, Endorse, or Volunteer">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,11 +39,104 @@
   <link rel="mask-icon" href="/assets/img/favicon/safari-pinned-tab.svg" color="#852d97">
   <link rel="manifest" href="/assets/img/favicon/site.webmanifest">
 
+  <style>
+    .support-choice-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: .75rem;
+    }
+    .support-choice {
+      display: flex;
+      gap: .8rem;
+      align-items: flex-start;
+      border: 1px solid rgba(0, 0, 0, .12);
+      border-radius: 1rem;
+      padding: 1rem;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,.05);
+    }
+    .support-choice input { width: auto; margin-top: .15rem; }
+    .support-choice strong { display:block; margin-bottom:.2rem; color: var(--ink); }
+    .support-choice span { display:block; font-size:.95rem; }
+    .support-panel {
+      margin-top: 1.25rem;
+      padding: 1.25rem;
+      border: 1px solid rgba(133, 45, 151, .15);
+      border-radius: 1rem;
+      background: linear-gradient(180deg, rgba(133,45,151,.05), rgba(255,255,255,1));
+    }
+    .support-panel[hidden] { display: none !important; }
+    .support-panel h3 { margin: 0 0 1rem; color: var(--purple, #852d97); }
+    .money-input {
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(0,0,0,.14);
+      border-radius: .85rem;
+      overflow: hidden;
+      background: #fff;
+    }
+    .money-input__symbol {
+      padding: 0 1rem;
+      font-weight: 800;
+      color: var(--ink);
+      background: rgba(0,0,0,.04);
+      align-self: stretch;
+      display: inline-flex;
+      align-items: center;
+    }
+    .money-input input {
+      border: 0;
+      border-radius: 0;
+    }
+    .support-help-text {
+      margin: .4rem 0 0;
+      font-size: .92rem;
+      opacity: .8;
+    }
+
+    .support-check-group,
+    .availability-check-group,
+    .endorsement-type-grid {
+      display: grid;
+      gap: .75rem;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      margin-top: .5rem;
+    }
+    .support-check-option,
+    .availability-check-option,
+    .endorsement-type-option {
+      display: flex;
+      gap: .65rem;
+      align-items: flex-start;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: .9rem;
+      padding: .85rem 1rem;
+      background: #fff;
+    }
+    .support-check-option input,
+    .availability-check-option input,
+    .endorsement-type-option input {
+      width: auto;
+      margin-top: .2rem;
+    }
+    .other-help-wrap[hidden],
+    .endorsement-name-wrap[hidden],
+    .endorsement-message-wrap[hidden],
+    .final-support-fields[hidden] {
+      display: none !important;
+    }
+    .final-support-fields {
+      grid-column: 1 / -1;
+      width: 100%;
+    }
+
+  </style>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-
     {
       "@type": "PoliticalCandidate",
       "name": "Gary Gardner",
@@ -66,7 +159,6 @@
         "https://www.youtube.com/@gardnerfordhs"
       ]
     },
-
     {
       "@type": "Organization",
       "name": "Gary Gardner for DHS",
@@ -81,55 +173,38 @@
         "https://www.youtube.com/@gardnerfordhs"
       ]
     },
-
     {
       "@type": "WebSite",
       "url": "https://gardnerfordhs.com/",
       "name": "Gary Gardner for DHS"
     },
-
     {
       "@type": "WebPage",
-      "name": "Gary Gardner for Desert Hot Springs City Council District 1",
-      "url": "https://gardnerfordhs.com/",
-      "description": "Gary Gardner is running for Desert Hot Springs City Council District 1. Learn about his vision, priorities, and how to support the campaign.",
+      "name": "Support Gary Gardner",
+      "url": "https://gardnerfordhs.com/support/",
+      "description": "Donate, endorse, volunteer, or combine all three on one support page.",
       "inLanguage": "en-US"
-    },
-
-    {
-      "@type": "ImageObject",
-      "name": "Gary Gardner Campaign Image",
-      "url": "https://gardnerfordhs.com/assets/img/social/og-image-square.jpg"
     }
-
   ]
 }
 </script>
 </head>
 <body>
-
   <a class="skip-link" href="#main-content">Skip to content</a>
-		<header class="site-header">
-		  <div class="header-inner">
-			<a class="brand" href="/" aria-label="Gary Gardner for Desert Hot Springs City Council home">
-			  <img
-				class="logo"
-				src="/assets/img/garygardnerdhs2026.png"
-				alt="Gary Gardner City Council District 1 Delivering for DHS"
-				width="200"
-				height="88"
-			  >
-			</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="Gary Gardner for Desert Hot Springs City Council home">
+        <img class="logo" src="/assets/img/garygardnerdhs2026.png" alt="Gary Gardner City Council District 1 Delivering for DHS" width="200" height="88">
+      </a>
 
-			<nav class="desktop-nav" aria-label="Primary navigation">
+      <nav class="desktop-nav" aria-label="Primary navigation">
 			  <ul class="desktop-nav-list">
 				<li><a href="/" data-nav-link>Home</a></li>
 				<li><a href="/who-is-gary/" data-nav-link>About</a></li>
 				<li><a href="/the-issues/" data-nav-link>Issues</a></li>
 				<li><a href="/major-accomplishments/" data-nav-link>Accomplishments</a></li>
-				<li><a href="/supporters/" data-nav-link>Supporters</a></li>
+				<li><a href="/endorsements/" data-nav-link>Endorsements</a></li>
 				<li><a href="/support/" data-nav-link>Support</a></li>
-				<li><a href="/donate/" data-nav-link>Donate</a></li>
 				<li><a href="/contact/" data-nav-link>Contact</a></li>
 
 				<li class="desktop-nav-item desktop-nav-item--has-submenu">
@@ -145,38 +220,20 @@
 			  </ul>
 			</nav>
 
-			<div class="header-right">
-			  <nav class="social-links" aria-label="Social media">
-				<a class="social-link" href="https://www.facebook.com/gardnerfordhs" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-				  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 8.5V6.8c0-.8.4-1.3 1.4-1.3H17V2.2c-.4-.1-1.7-.2-3.2-.2-3.2 0-5.3 1.9-5.3 5.5v2H5v3.8h3.5V22h4V13.3h3.3l.5-3.8h-3.8Z"/></svg>
-				</a>
+      <div class="header-right">
+        <nav class="social-links" aria-label="Social media">
+          <a class="social-link" href="https://www.facebook.com/gardnerfordhs" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 8.5V6.8c0-.8.4-1.3 1.4-1.3H17V2.2c-.4-.1-1.7-.2-3.2-.2-3.2 0-5.3 1.9-5.3 5.5v2H5v3.8h3.5V22h4V13.3h3.3l.5-3.8h-3.8Z"/></svg></a>
+          <a class="social-link" href="https://www.instagram.com/gardnerfordhs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.2 2h9.6A5.2 5.2 0 0 1 22 7.2v9.6a5.2 5.2 0 0 1-5.2 5.2H7.2A5.2 5.2 0 0 1 2 16.8V7.2A5.2 5.2 0 0 1 7.2 2Zm0 1.9A3.3 3.3 0 0 0 3.9 7.2v9.6a3.3 3.3 0 0 0 3.3 3.3h9.6a3.3 3.3 0 0 0 3.3-3.3V7.2a3.3 3.3 0 0 0-3.3-3.3H7.2Zm9.9 1.5a1.2 1.2 0 1 1 0 2.3 1.2 1.2 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10.1A5 5 0 0 1 12 7Zm0 1.9a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Z"/></svg></a>
+          <a class="social-link" href="https://youtube.com/@gardnerfordhs" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.5 12 4.5 12 4.5s-5.7 0-7.5.6A3 3 0 0 0 2.4 7.2 31.4 31.4 0 0 0 2 12a31.4 31.4 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.8.6 7.5.6 7.5.6s5.7 0 7.5-.6a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 22 12a31.4 31.4 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg></a>
+        </nav>
+        <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="site-navigation" aria-label="Open main menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 6h16v2.5H4V6Zm0 4.75h16v2.5H4v-2.5ZM4 15.5h16V18H4v-2.5Z"/></svg></button>
+      </div>
+    </div>
+  </header>
 
-				<a class="social-link" href="https://www.instagram.com/gardnerfordhs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-				  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.2 2h9.6A5.2 5.2 0 0 1 22 7.2v9.6a5.2 5.2 0 0 1-5.2 5.2H7.2A5.2 5.2 0 0 1 2 16.8V7.2A5.2 5.2 0 0 1 7.2 2Zm0 1.9A3.3 3.3 0 0 0 3.9 7.2v9.6a3.3 3.3 0 0 0 3.3 3.3h9.6a3.3 3.3 0 0 0 3.3-3.3V7.2a3.3 3.3 0 0 0-3.3-3.3H7.2Zm9.9 1.5a1.2 1.2 0 1 1 0 2.3 1.2 1.2 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10.1A5 5 0 0 1 12 7Zm0 1.9a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Z"/></svg>
-				</a>
-				
-			   <a class="social-link" href="http://youtube.com/@gardnerfordhs" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-				  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.5 12 4.5 12 4.5s-5.7 0-7.5.6A3 3 0 0 0 2.4 7.2 31.4 31.4 0 0 0 2 12a31.4 31.4 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.8.6 7.5.6 7.5.6s5.7 0 7.5-.6a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 22 12a31.4 31.4 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/>
-				</a>
-			  </nav>
+  <div class="nav-backdrop" data-nav-backdrop></div>
 
-			  <button
-				class="menu-button"
-				type="button"
-				data-menu-button
-				aria-expanded="false"
-				aria-controls="site-navigation"
-				aria-label="Open main menu"
-			  >
-				<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 6h16v2.5H4V6Zm0 4.75h16v2.5H4v-2.5ZM4 15.5h16V18H4v-2.5Z"/></svg>
-			  </button>
-			</div>
-		  </div>
-		</header>
-
-		<div class="nav-backdrop" data-nav-backdrop></div>
-
-		<nav id="site-navigation" class="primary-nav" data-nav aria-label="Primary navigation">
+  <nav id="site-navigation" class="primary-nav" data-nav aria-label="Primary navigation">
 		  <div class="nav-head">
 			<h2 class="nav-title">Menu</h2>
 			<button class="nav-close" type="button" data-nav-close aria-label="Close menu">
@@ -189,9 +246,8 @@
 			<li><a href="/who-is-gary/" data-nav-link>About</a></li>
 			<li><a href="/the-issues/" data-nav-link>Issues</a></li>
 			<li><a href="/major-accomplishments/" data-nav-link>Accomplishments</a></li>
-			<li><a href="/supporters/" data-nav-link>Supporters</a></li>
+			<li><a href="/endorsements/" data-nav-link>Endorsements</a></li>
 			<li><a href="/support/" data-nav-link>Support</a></li>
-			<li><a href="/donate/" data-nav-link>Donate</a></li>
 			<li><a href="/contact/" data-nav-link>Contact</a></li>
 			<li class="nav-group">
 			  <span>Media</span>
@@ -203,100 +259,299 @@
 			</li>
 		  </ul>
 		  <div class="nav-mountains" aria-hidden="true"></div>
-		</nav><main id="main-content">
+		</nav>
+
+  <main id="main-content">
     <section class="hero hero--page hero--purple reveal" aria-labelledby="hero-title">
       <div class="hero-content">
-        <h1 id="hero-title" class="hero-title reveal">Support Our Campaign</h1>
-        <p class="hero-subtitle reveal reveal--delay-1">
-          I’d be honored if you’d endorse my campaign and tell your friends, and we can use volunteers, too.
-        </p>
+        <h1 id="hero-title" class="hero-title reveal">Support Gary Gardner</h1>
+        <p class="hero-subtitle reveal reveal--delay-1">Donate, endorse, volunteer, or do all three from one simple form.</p>
       </div>
     </section>
 
     <section class="section section--white">
       <div class="container">
-        <div class="copy reveal" style="max-width: 56rem; margin-bottom: 2rem;">
+        <div class="copy reveal" style="max-width: 58rem; margin-bottom: 2rem;">
           <h2 class="section-heading section-heading--purple">Join the Campaign</h2>
-          <p>
-            Your support helps build momentum across Desert Hot Springs. Whether you want to publicly endorse Gary Gardner or volunteer your time to help the campaign, we’d love to hear from you.
-          </p>
+          <p>Your support helps build momentum across Desert Hot Springs. Use the options below to donate, publicly endorse Gary Gardner, volunteer for the campaign, or combine any of them in one submission.</p>
+          <p>No tax dollars were used for the creation of this website and none are used for the maintenance or content creation.</p>
         </div>
 
         <div class="form-card reveal reveal--delay-1">
-          <form
-            name="endorse-volunteer"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            action="/endorse/thank-you/"
-          >
-            <input type="hidden" name="form-name" value="endorse-volunteer">
-            <p class="sr-only">
-              <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
-            </p>
+          <form id="support-form" name="campaign-support" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/support/thank-you/" netlify>
+            <input type="hidden" name="form-name" value="campaign-support">
+            <p class="sr-only"><label>Donâ€™t fill this out if youâ€™re human: <input name="bot-field"></label></p>
 
             <div class="form-grid">
               <div class="form-field">
-                <label for="endorse-first-name">First Name*</label>
-                <input id="endorse-first-name" name="first-name" type="text" autocomplete="given-name" required>
+                <label for="support-first-name">First Name*</label>
+                <input id="support-first-name" name="first-name" type="text" autocomplete="given-name" required>
               </div>
 
               <div class="form-field">
-                <label for="endorse-last-name">Last Name*</label>
-                <input id="endorse-last-name" name="last-name" type="text" autocomplete="family-name" required>
+                <label for="support-last-name">Last Name*</label>
+                <input id="support-last-name" name="last-name" type="text" autocomplete="family-name" required>
               </div>
 
               <div class="form-field">
-                <label for="endorse-phone">Phone*</label>
-                <input id="endorse-phone" name="phone" type="tel" autocomplete="tel" required>
+                <label for="support-phone">Phone*</label>
+                <input id="support-phone" name="phone" type="tel" autocomplete="tel" required>
               </div>
 
               <div class="form-field">
-                <label for="endorse-email">Email*</label>
-                <input id="endorse-email" name="email" type="email" autocomplete="email" required>
+                <label for="support-email">Email*</label>
+                <input id="support-email" name="email" type="email" autocomplete="email" required>
               </div>
 
               <div class="form-field form-field--full">
-                <label for="endorse-title">Title/Occupation (Optional)</label>
-                <input id="endorse-title" name="title-occupation" type="text" autocomplete="organization-title">
+                <label for="support-title">Title / Occupation</label>
+                <input id="support-title" name="title-occupation" type="text" autocomplete="organization-title">
               </div>
 
               <fieldset class="form-field form-field--full" style="border:0; padding:0; margin:0;">
-                <legend style="font-weight:800; color:var(--ink); margin-bottom:.45rem;">I would like to...*</legend>
-
-                <label style="display:flex; gap:.7rem; align-items:flex-start; font-weight:600;">
-                  <input type="radio" name="interest" value="Endorse Gary Gardner for City Council" required style="width:auto; margin-top:.2rem;">
-                  <span>Endorse Gary Gardner for City Council</span>
-                </label>
-
-                <label style="display:flex; gap:.7rem; align-items:flex-start; font-weight:600; margin-top:.7rem;">
-                  <input type="radio" name="interest" value="Volunteer to help the Gary Gardner for City Council campaign" required style="width:auto; margin-top:.2rem;">
-                  <span>Volunteer to help the Gary Gardner for City Council campaign</span>
-                </label>
+                <legend style="font-weight:800; color:var(--ink); margin-bottom:.45rem;">How would you like to support Gary?*</legend>
+                <div class="support-choice-grid">
+                  <label class="support-choice">
+                    <input type="checkbox" name="support-options" value="Donate to Gary" data-toggle="donate-panel">
+                    <span>
+                      <strong>Donate to Gary</strong>
+                      <span>Share contribution details and donation amount.</span>
+                    </span>
+                  </label>
+                  <label class="support-choice">
+                    <input type="checkbox" name="support-options" value="Endorse Gary" data-toggle="endorse-panel">
+                    <span>
+                      <strong>Endorse Gary</strong>
+                      <span>Publicly endorse the campaign and optionally add a message.</span>
+                    </span>
+                  </label>
+                  <label class="support-choice">
+                    <input type="checkbox" name="support-options" value="Volunteer to help Gary's campaign" data-toggle="volunteer-panel">
+                    <span>
+                      <strong>Volunteer to help Gary's campaign</strong>
+                      <span>Tell the campaign how you'd like to help.</span>
+                    </span>
+                  </label>
+                </div>
+                <p class="support-help-text">Select one, two, or all three.</p>
+                <input type="hidden" id="support-selection-summary" name="support-selection-summary" value="">
               </fieldset>
 
-              <div class="form-field form-field--full">
-                <label for="endorse-message">Message (Optional)</label>
-                <textarea id="endorse-message" name="message"></textarea>
-              </div>
+              <section class="support-panel form-field form-field--full" id="donate-panel" hidden aria-labelledby="donate-panel-title">
+                <h3 id="donate-panel-title">Donation Details</h3>
 
-              <div class="form-field form-field--full">
-                <div data-netlify-recaptcha="true"></div>
-              </div>
+                <div class="form-grid">
+                  <div class="form-field">
+                    <label for="donate-occupation">Your Occupation*</label>
+                    <input id="donate-occupation" name="donation-occupation" type="text" autocomplete="organization-title" data-required-for="donate-panel">
+                  </div>
 
-              <div class="form-field form-field--full">
-                <button class="btn btn--primary" type="submit">Submit</button>
+                  <div class="form-field">
+                    <label for="donate-address-1">Street Address*</label>
+                    <input id="donate-address-1" name="donation-address-line-1" type="text" autocomplete="address-line1" data-required-for="donate-panel">
+                  </div>
+
+                  <div class="form-field form-field--full">
+                    <label for="donate-address-2">Address Line 2</label>
+                    <input id="donate-address-2" name="donation-address-line-2" type="text" autocomplete="address-line2">
+                  </div>
+
+                  <div class="form-field">
+                    <label for="donate-city">City*</label>
+                    <input id="donate-city" name="donation-city" type="text" autocomplete="address-level2" data-required-for="donate-panel">
+                  </div>
+
+                  <div class="form-field">
+                    <label for="donate-state">State / Province / Region*</label>
+                    <input id="donate-state" name="donation-state-region" type="text" autocomplete="address-level1" data-required-for="donate-panel">
+                  </div>
+
+                  <div class="form-field">
+                    <label for="donate-zip">ZIP / Postal Code*</label>
+                    <input id="donate-zip" name="donation-zip-postal" type="text" autocomplete="postal-code" data-required-for="donate-panel">
+                  </div>
+
+                  <div class="form-field">
+                    <label for="donate-country">Country*</label>
+                    <input id="donate-country" name="donation-country" type="text" autocomplete="country-name" data-required-for="donate-panel">
+                  </div>
+
+                  <div class="form-field form-field--full">
+                    <fieldset class="donation-options">
+                      <legend>Choose Donation Amount*</legend>
+                      <div class="donation-grid">
+                        <label class="donation-pill"><input type="radio" name="donation-choice" value="25" data-required-for="donate-panel"><span>$25</span></label>
+                        <label class="donation-pill"><input type="radio" name="donation-choice" value="50"><span>$50</span></label>
+                        <label class="donation-pill"><input type="radio" name="donation-choice" value="75"><span>$75</span></label>
+                        <label class="donation-pill"><input type="radio" name="donation-choice" value="100"><span>$100</span></label>
+                        <label class="donation-pill"><input type="radio" name="donation-choice" value="200"><span>$200</span></label>
+                        <label class="donation-pill"><input type="radio" name="donation-choice" value="500"><span>$500</span></label>
+                        <label class="donation-pill"><input type="radio" name="donation-choice" value="1000"><span>$1000</span></label>
+                        <label class="donation-pill"><input type="radio" name="donation-choice" value="2000"><span>$2000</span></label>
+                        <label class="donation-pill"><input type="radio" name="donation-choice" value="other"><span>Other</span></label>
+                      </div>
+                    </fieldset>
+                  </div>
+
+                  <div class="form-field form-field--full" id="custom-amount-wrap" hidden>
+                    <label for="donate-amount-other">Donation Amount*</label>
+                    <div class="money-input">
+                      <span class="money-input__symbol">$</span>
+                      <input id="donate-amount-other" name="donation-amount-other" type="text" inputmode="decimal" placeholder="Enter donation amount">
+                    </div>
+                  </div>
+
+                  <input type="hidden" id="donation-amount-final" name="donation-amount" value="">
+                </div>
+              </section>
+
+              
+<section class="support-panel form-field form-field--full" id="endorse-panel" hidden aria-labelledby="endorse-panel-title">
+                <h3 id="endorse-panel-title">Endorsement Details</h3>
+                <div class="form-grid">
+                  <fieldset class="form-field form-field--full" style="border:0; padding:0; margin:0;">
+                    <legend style="font-weight:800; color:var(--ink); margin-bottom:.45rem;">Endorser Type*</legend>
+                    <div class="endorsement-type-grid">
+                      <label class="endorsement-type-option">
+                        <input type="checkbox" name="endorser-type" value="Individual" data-required-for="endorse-panel" data-endorser-target="endorser-individual-wrap">
+                        <span>Individual</span>
+                      </label>
+                      <label class="endorsement-type-option">
+                        <input type="checkbox" name="endorser-type" value="Group" data-endorser-target="endorser-group-wrap">
+                        <span>Group</span>
+                      </label>
+                      <label class="endorsement-type-option">
+                        <input type="checkbox" name="endorser-type" value="Business/Organization" data-endorser-target="endorser-business-wrap">
+                        <span>Business/Organization</span>
+                      </label>
+                    </div>
+                    <p class="support-help-text">Choose one that best fits your endorsement.</p>
+                  </fieldset>
+
+                  <div class="form-field form-field--full endorsement-name-wrap" id="endorser-individual-wrap" hidden>
+                    <label for="endorse-individual-name">Full Name*</label>
+                    <input id="endorse-individual-name" name="endorsement-individual-name" type="text" autocomplete="name">
+                  </div>
+
+                  <div class="form-field form-field--full endorsement-name-wrap" id="endorser-group-wrap" hidden>
+                    <label for="endorse-group-name">Group Name*</label>
+                    <input id="endorse-group-name" name="endorsement-group-name" type="text" autocomplete="organization">
+                  </div>
+
+                  <div class="form-field form-field--full endorsement-name-wrap" id="endorser-business-wrap" hidden>
+                    <label for="endorse-business-name">Business / Organization Name*</label>
+                    <input id="endorse-business-name" name="endorsement-business-organization-name" type="text" autocomplete="organization">
+                  </div>
+
+                  <div class="form-field form-field--full endorsement-message-wrap" id="endorsement-message-wrap" hidden>
+                    <label for="endorse-message">Why are you endorsing Gary?</label>
+                    <textarea id="endorse-message" name="endorsement-message"></textarea>
+                  </div>
+
+                  <div class="form-field form-field--full">
+                    <label style="display:flex; gap:.7rem; align-items:flex-start; font-weight:600;">
+                      <input type="checkbox" id="endorse-consent" name="endorsement-public-consent" value="Yes, I approve this endorsement to be shared publicly" data-required-for="endorse-panel" style="width:auto; margin-top:.2rem;">
+                      <span>Yes, I approve this endorsement to be shared publicly.*</span>
+                    </label>
+                  </div>
+                </div>
+              </section>
+
+              <section class="support-panel form-field form-field--full" id="volunteer-panel" hidden aria-labelledby="volunteer-panel-title">
+                <h3 id="volunteer-panel-title">Volunteer Details</h3>
+                <div class="form-grid">
+                  <fieldset class="form-field form-field--full" style="border:0; padding:0; margin:0;">
+                    <legend style="font-weight:800; color:var(--ink); margin-bottom:.45rem;">How would you like to help?*</legend>
+                    <div class="support-check-group">
+                      <label class="support-check-option">
+                        <input type="checkbox" name="volunteer-help-areas" value="Walking precincts" data-required-for="volunteer-panel">
+                        <span>Walking precincts</span>
+                      </label>
+                      <label class="support-check-option">
+                        <input type="checkbox" name="volunteer-help-areas" value="Phone calls">
+                        <span>Phone calls</span>
+                      </label>
+                      <label class="support-check-option">
+                        <input type="checkbox" name="volunteer-help-areas" value="Events">
+                        <span>Events</span>
+                      </label>
+                      <label class="support-check-option">
+                        <input type="checkbox" name="volunteer-help-areas" value="Signs">
+                        <span>Signs</span>
+                      </label>
+                      <label class="support-check-option">
+                        <input type="checkbox" name="volunteer-help-areas" value="Outreach">
+                        <span>Outreach</span>
+                      </label>
+                      <label class="support-check-option">
+                        <input type="checkbox" name="volunteer-help-areas" value="Social media">
+                        <span>Social media</span>
+                      </label>
+                      <label class="support-check-option">
+                        <input type="checkbox" id="volunteer-help-other-toggle" name="volunteer-help-areas" value="Other">
+                        <span>Other</span>
+                      </label>
+                    </div>
+                    <div class="form-field form-field--full other-help-wrap" id="volunteer-help-other-wrap" hidden style="margin-top:1rem;">
+                      <label for="volunteer-help-other">Other way you'd like to help</label>
+                      <input id="volunteer-help-other" name="volunteer-help-other" type="text" placeholder="Write in another way you'd like to help">
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="form-field form-field--full" style="border:0; padding:0; margin:0;">
+                    <legend style="font-weight:800; color:var(--ink); margin-bottom:.45rem;">Availability</legend>
+                    <div class="availability-check-group">
+                      <label class="availability-check-option">
+                        <input type="checkbox" name="volunteer-availability" value="Weekdays">
+                        <span>Weekdays</span>
+                      </label>
+                      <label class="availability-check-option">
+                        <input type="checkbox" name="volunteer-availability" value="Weeknights">
+                        <span>Weeknights</span>
+                      </label>
+                      <label class="availability-check-option">
+                        <input type="checkbox" name="volunteer-availability" value="Weekends">
+                        <span>Weekends</span>
+                      </label>
+                      <label class="availability-check-option">
+                        <input type="checkbox" name="volunteer-availability" value="Flexible">
+                        <span>Flexible</span>
+                      </label>
+                    </div>
+                  </fieldset>
+                </div>
+              </section>
+
+              <div class="final-support-fields" id="final-support-fields" hidden>
+                <div class="form-field form-field--full">
+                  <label for="general-message">Anything Else We Should Know?</label>
+                  <textarea id="general-message" name="message"></textarea>
+                </div>
+
+                <div class="form-field form-field--full">
+                  <div data-netlify-recaptcha="true"></div>
+                </div>
+
+                <div class="form-field form-field--full" style="margin-top:25px;">
+                  <button class="btn btn--primary" type="submit">Submit Support Form</button>
+                </div>
               </div>
             </div>
           </form>
+
+          <div class="check-by-mail-note">
+            <strong>Attention Donors - do you prefer to mail a check?</strong>
+            <p>Please make checks payable to Gary Gardner for Desert Hot Springs City Council 2026 and mail to:<br>PO Box 333<br>Desert Hot Springs, CA 92240</p>
+            <p>FPPC: 1405627<br>EIN: 82-5194248</p>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-<div class="mountain-divider purple-mountain" aria-hidden="true"></div>
+  <div class="mountain-divider purple-mountain" aria-hidden="true"></div>
 
-<footer class="site-footer">
+  <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-branding">
@@ -329,9 +584,7 @@
 			<li><a href="/who-is-gary/" >About</a></li>
 			<li><a href="/the-issues/" >Issues</a></li>
 			<li><a href="/major-accomplishments/" >Accomplishments</a></li>
-			<li><a href="/supporters/" >Supporters</a></li>
 			<li><a href="/support/" >Support</a></li>
-			<li><a href="/donate/" >Donate</a></li>
 			<li><a href="/contact/" >Contact</a></li>
           </ul>
         </div>
@@ -339,8 +592,7 @@
         <div class="footer-nav-group">
           <h3 class="footer-subheading">Get Involved</h3>
           <ul class="footer-links-list">
-			<li><a href="/support/">Support</a></li>
-            <li><a href="/donate/">Donate</a></li>
+			<li><a href="/support/">Endorse, Donate, or Volunteer</a></li>
             <li><a href="/contact/">Contact</a></li>
           </ul>
         </div>
@@ -359,7 +611,7 @@
 
     <div class="footer-bottom">
       <div class="footer-meta">
-        <p>© 2026 Gary Gardner for Desert Hot Springs City Council 2026. All Rights Reserved.</p>
+        <p>Â© 2026 Gary Gardner for Desert Hot Springs City Council 2026. All Rights Reserved.</p>
         <p>No tax dollars were used for the creation of this website and none are used for the maintenance or content creation.</p>
         <p>PO Box 333, DHS 92240.</p>
         <p>FPPC#: 1405627</p>
@@ -387,7 +639,200 @@
 		</p>
     </div>
   </div>
-</footer>    
-<script src="/assets/js/site.js" defer></script>
+</footer>
+
+  <script src="/assets/js/site.js" defer></script>
+  
+<script>
+    (function () {
+      var form = document.getElementById('support-form');
+      if (!form) return;
+
+      var optionInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="support-options"]'));
+      var panels = {
+        'donate-panel': document.getElementById('donate-panel'),
+        'endorse-panel': document.getElementById('endorse-panel'),
+        'volunteer-panel': document.getElementById('volunteer-panel')
+      };
+      var selectionSummary = document.getElementById('support-selection-summary');
+      var donationChoiceInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="donation-choice"]'));
+      var customAmountWrap = document.getElementById('custom-amount-wrap');
+      var customAmountInput = document.getElementById('donate-amount-other');
+      var donationAmountFinal = document.getElementById('donation-amount-final');
+      var thankYouBase = '/support/thank-you/';
+      var finalSupportFields = document.getElementById('final-support-fields');
+      var volunteerOtherToggle = document.getElementById('volunteer-help-other-toggle');
+      var volunteerOtherWrap = document.getElementById('volunteer-help-other-wrap');
+      var volunteerOtherInput = document.getElementById('volunteer-help-other');
+      var endorserTypeInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="endorser-type"]'));
+      var volunteerHelpInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="volunteer-help-areas"]'));
+      var endorsementMessageWrap = document.getElementById('endorsement-message-wrap');
+      var endorsementNameWraps = {
+        'Individual': document.getElementById('endorser-individual-wrap'),
+        'Group': document.getElementById('endorser-group-wrap'),
+        'Business/Organization': document.getElementById('endorser-business-wrap')
+      };
+      var endorsementNameInputs = {
+        'Individual': document.getElementById('endorse-individual-name'),
+        'Group': document.getElementById('endorse-group-name'),
+        'Business/Organization': document.getElementById('endorse-business-name')
+      };
+
+      function setPanelRequired(panelId, isActive) {
+        var fields = form.querySelectorAll('[data-required-for="' + panelId + '"]');
+        Array.prototype.forEach.call(fields, function (field) {
+          if (field.name === 'donation-choice') {
+            field.required = isActive && field === donationChoiceInputs[0];
+          } else if (field.name === 'endorser-type') {
+            field.required = isActive && field === endorserTypeInputs[0];
+          } else if (field.name === 'volunteer-help-areas') {
+            field.required = isActive && field === volunteerHelpInputs[0];
+          } else {
+            field.required = isActive;
+          }
+        });
+      }
+
+      function updateSelectionSummary() {
+        var selected = optionInputs.filter(function (input) { return input.checked; }).map(function (input) { return input.value; });
+        selectionSummary.value = selected.join(', ');
+        return selected;
+      }
+
+      function enforceSingleCheckbox(inputs, changedInput) {
+        if (!changedInput.checked) return;
+        inputs.forEach(function (input) {
+          if (input !== changedInput) input.checked = false;
+        });
+      }
+
+      function updateVolunteerOther() {
+        var isOther = volunteerOtherToggle && volunteerOtherToggle.checked;
+        if (volunteerOtherWrap) volunteerOtherWrap.hidden = !isOther;
+        if (volunteerOtherInput) volunteerOtherInput.required = !!isOther;
+      }
+
+      function updateEndorserFields() {
+        var selectedType = endorserTypeInputs.find(function (input) { return input.checked; });
+        var selectedValue = selectedType ? selectedType.value : '';
+
+        Object.keys(endorsementNameWraps).forEach(function (key) {
+          if (endorsementNameWraps[key]) {
+            endorsementNameWraps[key].hidden = key !== selectedValue;
+          }
+          if (endorsementNameInputs[key]) {
+            endorsementNameInputs[key].required = key === selectedValue;
+          }
+        });
+
+        if (endorsementMessageWrap) {
+          endorsementMessageWrap.hidden = !selectedValue;
+        }
+      }
+
+      function togglePanels() {
+        var selected = updateSelectionSummary();
+
+        optionInputs.forEach(function (input) {
+          var panelId = input.getAttribute('data-toggle');
+          var panel = panels[panelId];
+          if (!panel) return;
+          panel.hidden = !input.checked;
+          setPanelRequired(panelId, input.checked);
+        });
+
+        if (finalSupportFields) {
+          finalSupportFields.hidden = selected.length === 0;
+        }
+
+        updateVolunteerOther();
+        updateDonationAmount();
+        updateEndorserFields();
+      }
+
+      function updateDonationAmount() {
+        var selectedDonation = donationChoiceInputs.find(function (input) { return input.checked; });
+        var donateSelected = optionInputs.some(function (input) { return input.checked && input.getAttribute('data-toggle') === 'donate-panel'; });
+        var isOther = donateSelected && selectedDonation && selectedDonation.value === 'other';
+
+        customAmountWrap.hidden = !isOther;
+        customAmountInput.required = !!isOther;
+
+        if (!donateSelected || !selectedDonation) {
+          donationAmountFinal.value = '';
+          customAmountInput.required = false;
+          return;
+        }
+
+        donationAmountFinal.value = selectedDonation.value === 'other' ? customAmountInput.value.trim() : selectedDonation.value;
+      }
+
+      optionInputs.forEach(function (input) {
+        input.addEventListener('change', togglePanels);
+      });
+
+      endorserTypeInputs.forEach(function (input) {
+        input.addEventListener('change', function () {
+          enforceSingleCheckbox(endorserTypeInputs, input);
+          updateEndorserFields();
+        });
+      });
+
+      donationChoiceInputs.forEach(function (input) {
+        input.addEventListener('change', updateDonationAmount);
+      });
+
+      volunteerHelpInputs.forEach(function (input) {
+        input.addEventListener('change', updateVolunteerOther);
+      });
+
+      if (customAmountInput) {
+        customAmountInput.addEventListener('input', updateDonationAmount);
+      }
+
+      form.addEventListener('submit', function (event) {
+        var selected = updateSelectionSummary();
+        if (!selected.length) {
+          event.preventDefault();
+          window.alert('Please choose at least one way you would like to support Gary.');
+          return;
+        }
+
+        updateVolunteerOther();
+        updateDonationAmount();
+        updateEndorserFields();
+
+        if (!form.checkValidity()) {
+          return;
+        }
+
+        event.preventDefault();
+
+        var donationAmount = donationAmountFinal.value || '';
+        var email = (form.querySelector('[name="email"]') || {}).value || '';
+        var query = new URLSearchParams();
+        query.set('submitted', '1');
+        query.set('options', selected.join('|'));
+        if (donationAmount) query.set('amount', donationAmount);
+        if (email) query.set('email', email);
+
+        var body = new URLSearchParams(new FormData(form)).toString();
+
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body
+        }).then(function () {
+          window.location.href = thankYouBase + '?' + query.toString();
+        }).catch(function () {
+          form.submit();
+        });
+      });
+
+      togglePanels();
+    }());
+  </script>
+
 </body>
 </html>
+
