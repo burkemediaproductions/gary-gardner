@@ -476,6 +476,7 @@ main { display: block; }
 .section--blue { background: var(--blue); color: #fff; }
 .section--purple { background: var(--purple); color: #fff; }
 .section--blue .copy p, .section--purple .copy p {color:#fff;} 
+.section--blue .copy p, .section--blue .copy ul li, .section--purple .copy p, .section--purple .copy ul li {color:#fff;} 
 .section-heading {
   font-family: var(--display); text-transform: uppercase; letter-spacing: .04em; line-height: .98;
   font-size: clamp(2.2rem, 5vw, 4.5rem); margin: 0 0 1rem;
