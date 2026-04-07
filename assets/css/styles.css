@@ -489,7 +489,7 @@ main { display: block; }
 .lead {
   font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--muted); max-width: 60rem;
 }
-.copy p { font-size: clamp(1.08rem, 1.6vw, 1.34rem); color: var(--muted); margin: 0 0 1.25rem; }
+.copy p, .copy ul li { font-size: clamp(1.08rem, 1.6vw, 1.34rem); color: var(--muted); margin: 0 0 1.25rem; }
 .grid-2 {
   display: grid; gap: 2rem; align-items: center; grid-template-columns: 1.12fr .88fr;
 }
