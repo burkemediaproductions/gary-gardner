@@ -1,5 +1,6 @@
 [build]
   publish = "."
+  functions = "netlify/functions"
 
 [[redirects]]
   from = "/who-is-gary"
@@ -28,10 +29,15 @@
 
 [[redirects]]
   from = "/media/media-archive"
-  to = "/media/media-archive/"
+  to = "/media/2022-media-archive/"
   status = 301
 
 [[redirects]]
   from = "/links-resources"
-  to = "/links-resources/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/endorse-volunteer"
+  to = "/support/"
   status = 301
