@@ -12,6 +12,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/styles.css">
+
+  <link rel="icon" href="/assets/img/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png">
+  <link rel="mask-icon" href="/assets/img/favicon/safari-pinned-tab.svg" color="#852d97">
+  <link rel="manifest" href="/assets/img/favicon/site.webmanifest">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -148,43 +155,134 @@
   </div>
 </footer>
 
-  <script>
-    (function () {
-      var params = new URLSearchParams(window.location.search);
-      var options = params.get('options');
-      var amount = params.get('amount');
-      var email = params.get('email');
-      var submitted = params.get('submitted');
+    <script>
+        (function () {
+          var params = new URLSearchParams(window.location.search);
+          var options = params.get('options');
+          var amount = params.get('amount');
+          var email = params.get('email');
+          var submitted = params.get('submitted');
+          var sessionId = params.get('session_id');
+          var firstName = params.get('firstName');
+          var lastName = params.get('lastName');
 
-      if (!submitted) return;
+          var heading = document.getElementById('thank-you-heading');
+          var copy = document.getElementById('thank-you-copy');
+          var summary = document.getElementById('support-summary');
+          var optionsText = document.getElementById('support-options-text');
+          var donationLine = document.getElementById('donation-summary-line');
+          var donationText = document.getElementById('donation-amount-text');
+          var emailLine = document.getElementById('email-summary-line');
+          var emailText = document.getElementById('support-email-text');
 
-      var heading = document.getElementById('thank-you-heading');
-      var copy = document.getElementById('thank-you-copy');
-      var summary = document.getElementById('support-summary');
-      var optionsText = document.getElementById('support-options-text');
-      var donationLine = document.getElementById('donation-summary-line');
-      var donationText = document.getElementById('donation-amount-text');
-      var emailLine = document.getElementById('email-summary-line');
-      var emailText = document.getElementById('support-email-text');
+          function getFullName(first, last) {
+            return [first || '', last || ''].join(' ').trim();
+          }
 
-      var readableOptions = options ? options.split('|').join(', ') : 'your support submission';
+          function getFriendlyName(name) {
+            return name ? ', ' + name : '';
+          }
 
-      if (heading) heading.textContent = 'Thank you for supporting Gary!';
-      if (copy) copy.textContent = 'Your submission has been received and sent to the campaign.';
-      if (summary) summary.hidden = false;
-      if (optionsText) optionsText.textContent = readableOptions;
+          var fullName = getFullName(firstName, lastName);
 
-      if (amount && donationLine && donationText) {
-        donationLine.hidden = false;
-        donationText.textContent = amount.charAt(0) === '$' ? amount : '$' + amount;
-      }
+          if (submitted) {
+            var readableOptions = options ? options.split('|').join(', ') : 'your support submission';
 
-      if (email && emailLine && emailText) {
-        emailLine.hidden = false;
-        emailText.textContent = email;
-      }
-    }());
-  </script>
+            if (heading) heading.textContent = 'Thank you for supporting Gary' + getFriendlyName(fullName) + '!';
+            if (copy) copy.textContent = 'Your submission has been received and sent to the campaign.';
+            if (summary) summary.hidden = false;
+            if (optionsText) optionsText.textContent = readableOptions;
+
+            if (amount && donationLine && donationText) {
+              donationLine.hidden = false;
+              donationText.textContent = amount.charAt(0) === '$' ? amount : '$' + amount;
+            }
+
+            if (email && emailLine && emailText) {
+              emailLine.hidden = false;
+              emailText.textContent = email;
+            }
+
+            if (sessionId) {
+              fetch('/.netlify/functions/get-checkout-session?session_id=' + encodeURIComponent(sessionId))
+                .then(function (response) { return response.json(); })
+                .then(function (data) {
+                  if (!data || data.error) return;
+
+                  var stripeFirst = data.metadata && data.metadata.first_name ? data.metadata.first_name : '';
+                  var stripeLast = data.metadata && data.metadata.last_name ? data.metadata.last_name : '';
+                  var stripeEmail = data.customer_email || (data.metadata && data.metadata.email) || '';
+                  var stripeAmount = data.amount_total ? ('$' + (data.amount_total / 100).toFixed(2)) : '';
+                  var stripeName = getFullName(stripeFirst, stripeLast);
+
+                  if (stripeName && heading) {
+                    heading.textContent = 'Thank you for supporting Gary, ' + stripeName + '!';
+                  }
+
+                  if (stripeAmount && donationLine && donationText) {
+                    donationLine.hidden = false;
+                    donationText.textContent = stripeAmount;
+                  }
+
+                  if (stripeEmail && emailLine && emailText) {
+                    emailLine.hidden = false;
+                    emailText.textContent = stripeEmail;
+                  }
+                })
+                .catch(function (error) {
+                  console.error('Unable to load Stripe session details:', error);
+                });
+            }
+
+            return;
+          }
+
+          if (sessionId) {
+            fetch('/.netlify/functions/get-checkout-session?session_id=' + encodeURIComponent(sessionId))
+              .then(function (response) { return response.json(); })
+              .then(function (data) {
+                if (!data || data.error) return;
+
+                var stripeFirst = data.metadata && data.metadata.first_name ? data.metadata.first_name : '';
+                var stripeLast = data.metadata && data.metadata.last_name ? data.metadata.last_name : '';
+                var stripeEmail = data.customer_email || (data.metadata && data.metadata.email) || '';
+                var stripeAmount = data.amount_total ? ('$' + (data.amount_total / 100).toFixed(2)) : '';
+                var stripeName = getFullName(stripeFirst, stripeLast);
+
+                if (heading) {
+                  heading.textContent = stripeName
+                    ? 'Thank you for your donation, ' + stripeName + '!'
+                    : 'Thank you for your donation!';
+                }
+
+                if (copy) {
+                  copy.textContent = 'Your donation was successfully received and your support means a great deal to the campaign.';
+                }
+
+                if (summary) summary.hidden = false;
+                if (optionsText) optionsText.textContent = 'Donation to Gary Gardner';
+
+                if (stripeAmount && donationLine && donationText) {
+                  donationLine.hidden = false;
+                  donationText.textContent = stripeAmount;
+                }
+
+                if (stripeEmail && emailLine && emailText) {
+                  emailLine.hidden = false;
+                  emailText.textContent = stripeEmail;
+                }
+              })
+              .catch(function (error) {
+                console.error('Unable to load Stripe session details:', error);
+              });
+
+            return;
+          }
+
+          if (heading) heading.textContent = 'Thank you for your support!';
+          if (copy) copy.textContent = 'We appreciate your support for Gary Gardner for Desert Hot Springs City Council District 1.';
+        }());
+</script>
 </body>
 </html>
 

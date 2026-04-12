@@ -840,6 +840,8 @@
     query.set('options', selected.join('|'));
     if (donationAmount) query.set('amount', donationAmount);
     if (email) query.set('email', email);
+    if (firstName) query.set('firstName', firstName);
+    if (lastName) query.set('lastName', lastName);
 
     var body = new URLSearchParams(new FormData(form)).toString();
 

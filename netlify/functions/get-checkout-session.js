@@ -4,40 +4,83 @@ exports.handler = async (event) => {
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-    const sessionId =
-      event.queryStringParameters &&
-      event.queryStringParameters.session_id;
+    const body = JSON.parse(event.body || "{}");
 
-    if (!sessionId) {
+    const amount = Math.round(parseFloat(body.donationAmount) * 100);
+
+    if (!amount || amount < 100) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: "Missing session_id" })
+        body: JSON.stringify({ error: "Invalid donation amount." })
       };
     }
 
-    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    const proto =
+      event.headers["x-forwarded-proto"] ||
+      event.headers["X-Forwarded-Proto"] ||
+      "https";
+
+    const host =
+      event.headers["x-forwarded-host"] ||
+      event.headers["host"];
+
+    const baseUrl = `${proto}://${host}`;
+
+    const successParams = new URLSearchParams({
+      submitted: "1",
+      options: "Donate to Gary",
+      amount: String(body.donationAmount || ""),
+      email: String(body.email || ""),
+      firstName: String(body.firstName || ""),
+      lastName: String(body.lastName || "")
+    });
+
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      success_url: `${baseUrl}/support/thank-you/?${successParams.toString()}&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${baseUrl}/support/`,
+      customer_email: body.email || undefined,
+      billing_address_collection: "required",
+      line_items: [
+        {
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: "Campaign Donation",
+              description: "Gary Gardner for Desert Hot Springs City Council District 1"
+            },
+            unit_amount: amount
+          },
+          quantity: 1
+        }
+      ],
+      metadata: {
+        first_name: body.firstName || "",
+        last_name: body.lastName || "",
+        occupation: body.occupation || "",
+        phone: body.phone || "",
+        email: body.email || "",
+        address_1: body.address1 || "",
+        address_2: body.address2 || "",
+        city: body.city || "",
+        state: body.state || "",
+        zip: body.zip || "",
+        country: body.country || "",
+        donation_amount: String(body.donationAmount || "")
+      }
+    });
 
     return {
       statusCode: 200,
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        id: session.id,
-        payment_status: session.payment_status,
-        customer_email: session.customer_email || "",
-        amount_total: session.amount_total || 0,
-        currency: session.currency || "usd",
-        metadata: session.metadata || {}
-      })
+      body: JSON.stringify({ url: session.url })
     };
   } catch (error) {
-    console.error("get-checkout-session error:", error);
+    console.error("create-checkout-session error:", error);
 
     return {
       statusCode: 500,
       body: JSON.stringify({
-        error: error.message || "Unable to retrieve session"
+        error: error.message || "Server error"
       })
     };
   }
