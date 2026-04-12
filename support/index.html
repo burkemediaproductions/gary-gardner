@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -646,195 +646,250 @@
   <script src="/assets/js/site.js" defer></script>
   
 <script>
-    (function () {
-      var form = document.getElementById('support-form');
-      if (!form) return;
+(function () {
+  var form = document.getElementById('support-form');
+  if (!form) return;
 
-      var optionInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="support-options"]'));
-      var panels = {
-        'donate-panel': document.getElementById('donate-panel'),
-        'endorse-panel': document.getElementById('endorse-panel'),
-        'volunteer-panel': document.getElementById('volunteer-panel')
-      };
-      var selectionSummary = document.getElementById('support-selection-summary');
-      var donationChoiceInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="donation-choice"]'));
-      var customAmountWrap = document.getElementById('custom-amount-wrap');
-      var customAmountInput = document.getElementById('donate-amount-other');
-      var donationAmountFinal = document.getElementById('donation-amount-final');
-      var thankYouBase = '/support/thank-you/';
-      var finalSupportFields = document.getElementById('final-support-fields');
-      var volunteerOtherToggle = document.getElementById('volunteer-help-other-toggle');
-      var volunteerOtherWrap = document.getElementById('volunteer-help-other-wrap');
-      var volunteerOtherInput = document.getElementById('volunteer-help-other');
-      var endorserTypeInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="endorser-type"]'));
-      var volunteerHelpInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="volunteer-help-areas"]'));
-      var endorsementMessageWrap = document.getElementById('endorsement-message-wrap');
-      var endorsementNameWraps = {
-        'Individual': document.getElementById('endorser-individual-wrap'),
-        'Group': document.getElementById('endorser-group-wrap'),
-        'Business/Organization': document.getElementById('endorser-business-wrap')
-      };
-      var endorsementNameInputs = {
-        'Individual': document.getElementById('endorse-individual-name'),
-        'Group': document.getElementById('endorse-group-name'),
-        'Business/Organization': document.getElementById('endorse-business-name')
-      };
+  var optionInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="support-options"]'));
+  var panels = {
+    'donate-panel': document.getElementById('donate-panel'),
+    'endorse-panel': document.getElementById('endorse-panel'),
+    'volunteer-panel': document.getElementById('volunteer-panel')
+  };
+  var selectionSummary = document.getElementById('support-selection-summary');
+  var donationChoiceInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="donation-choice"]'));
+  var customAmountWrap = document.getElementById('custom-amount-wrap');
+  var customAmountInput = document.getElementById('donate-amount-other');
+  var donationAmountFinal = document.getElementById('donation-amount-final');
+  var thankYouBase = '/support/thank-you/';
+  var finalSupportFields = document.getElementById('final-support-fields');
+  var volunteerOtherToggle = document.getElementById('volunteer-help-other-toggle');
+  var volunteerOtherWrap = document.getElementById('volunteer-help-other-wrap');
+  var volunteerOtherInput = document.getElementById('volunteer-help-other');
+  var endorserTypeInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="endorser-type"]'));
+  var volunteerHelpInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="volunteer-help-areas"]'));
+  var endorsementMessageWrap = document.getElementById('endorsement-message-wrap');
+  var endorsementNameWraps = {
+    'Individual': document.getElementById('endorser-individual-wrap'),
+    'Group': document.getElementById('endorser-group-wrap'),
+    'Business/Organization': document.getElementById('endorser-business-wrap')
+  };
+  var endorsementNameInputs = {
+    'Individual': document.getElementById('endorse-individual-name'),
+    'Group': document.getElementById('endorse-group-name'),
+    'Business/Organization': document.getElementById('endorse-business-name')
+  };
 
-      function setPanelRequired(panelId, isActive) {
-        var fields = form.querySelectorAll('[data-required-for="' + panelId + '"]');
-        Array.prototype.forEach.call(fields, function (field) {
-          if (field.name === 'donation-choice') {
-            field.required = isActive && field === donationChoiceInputs[0];
-          } else if (field.name === 'endorser-type') {
-            field.required = isActive && field === endorserTypeInputs[0];
-          } else if (field.name === 'volunteer-help-areas') {
-            field.required = isActive && field === volunteerHelpInputs[0];
-          } else {
-            field.required = isActive;
-          }
-        });
+  function setPanelRequired(panelId, isActive) {
+    var fields = form.querySelectorAll('[data-required-for="' + panelId + '"]');
+    Array.prototype.forEach.call(fields, function (field) {
+      if (field.name === 'donation-choice') {
+        field.required = isActive && field === donationChoiceInputs[0];
+      } else if (field.name === 'endorser-type') {
+        field.required = isActive && field === endorserTypeInputs[0];
+      } else if (field.name === 'volunteer-help-areas') {
+        field.required = isActive && field === volunteerHelpInputs[0];
+      } else {
+        field.required = isActive;
       }
+    });
+  }
 
-      function updateSelectionSummary() {
-        var selected = optionInputs.filter(function (input) { return input.checked; }).map(function (input) { return input.value; });
-        selectionSummary.value = selected.join(', ');
-        return selected;
+  function updateSelectionSummary() {
+    var selected = optionInputs
+      .filter(function (input) { return input.checked; })
+      .map(function (input) { return input.value; });
+
+    selectionSummary.value = selected.join(', ');
+    return selected;
+  }
+
+  function enforceSingleCheckbox(inputs, changedInput) {
+    if (!changedInput.checked) return;
+    inputs.forEach(function (input) {
+      if (input !== changedInput) input.checked = false;
+    });
+  }
+
+  function updateVolunteerOther() {
+    var isOther = volunteerOtherToggle && volunteerOtherToggle.checked;
+    if (volunteerOtherWrap) volunteerOtherWrap.hidden = !isOther;
+    if (volunteerOtherInput) volunteerOtherInput.required = !!isOther;
+  }
+
+  function updateEndorserFields() {
+    var selectedType = endorserTypeInputs.find(function (input) { return input.checked; });
+    var selectedValue = selectedType ? selectedType.value : '';
+
+    Object.keys(endorsementNameWraps).forEach(function (key) {
+      if (endorsementNameWraps[key]) {
+        endorsementNameWraps[key].hidden = key !== selectedValue;
       }
-
-      function enforceSingleCheckbox(inputs, changedInput) {
-        if (!changedInput.checked) return;
-        inputs.forEach(function (input) {
-          if (input !== changedInput) input.checked = false;
-        });
+      if (endorsementNameInputs[key]) {
+        endorsementNameInputs[key].required = key === selectedValue;
       }
+    });
 
-      function updateVolunteerOther() {
-        var isOther = volunteerOtherToggle && volunteerOtherToggle.checked;
-        if (volunteerOtherWrap) volunteerOtherWrap.hidden = !isOther;
-        if (volunteerOtherInput) volunteerOtherInput.required = !!isOther;
-      }
+    if (endorsementMessageWrap) {
+      endorsementMessageWrap.hidden = !selectedValue;
+    }
+  }
 
-      function updateEndorserFields() {
-        var selectedType = endorserTypeInputs.find(function (input) { return input.checked; });
-        var selectedValue = selectedType ? selectedType.value : '';
+  function togglePanels() {
+    var selected = updateSelectionSummary();
 
-        Object.keys(endorsementNameWraps).forEach(function (key) {
-          if (endorsementNameWraps[key]) {
-            endorsementNameWraps[key].hidden = key !== selectedValue;
-          }
-          if (endorsementNameInputs[key]) {
-            endorsementNameInputs[key].required = key === selectedValue;
-          }
-        });
+    optionInputs.forEach(function (input) {
+      var panelId = input.getAttribute('data-toggle');
+      var panel = panels[panelId];
+      if (!panel) return;
+      panel.hidden = !input.checked;
+      setPanelRequired(panelId, input.checked);
+    });
 
-        if (endorsementMessageWrap) {
-          endorsementMessageWrap.hidden = !selectedValue;
-        }
-      }
+    if (finalSupportFields) {
+      finalSupportFields.hidden = selected.length === 0;
+    }
 
-      function togglePanels() {
-        var selected = updateSelectionSummary();
+    updateVolunteerOther();
+    updateDonationAmount();
+    updateEndorserFields();
+  }
 
-        optionInputs.forEach(function (input) {
-          var panelId = input.getAttribute('data-toggle');
-          var panel = panels[panelId];
-          if (!panel) return;
-          panel.hidden = !input.checked;
-          setPanelRequired(panelId, input.checked);
-        });
+  function updateDonationAmount() {
+    var selectedDonation = donationChoiceInputs.find(function (input) { return input.checked; });
+    var donateSelected = optionInputs.some(function (input) {
+      return input.checked && input.getAttribute('data-toggle') === 'donate-panel';
+    });
+    var isOther = donateSelected && selectedDonation && selectedDonation.value === 'other';
 
-        if (finalSupportFields) {
-          finalSupportFields.hidden = selected.length === 0;
-        }
+    customAmountWrap.hidden = !isOther;
+    customAmountInput.required = !!isOther;
 
-        updateVolunteerOther();
-        updateDonationAmount();
-        updateEndorserFields();
-      }
+    if (!donateSelected || !selectedDonation) {
+      donationAmountFinal.value = '';
+      customAmountInput.required = false;
+      return;
+    }
 
-      function updateDonationAmount() {
-        var selectedDonation = donationChoiceInputs.find(function (input) { return input.checked; });
-        var donateSelected = optionInputs.some(function (input) { return input.checked && input.getAttribute('data-toggle') === 'donate-panel'; });
-        var isOther = donateSelected && selectedDonation && selectedDonation.value === 'other';
+    donationAmountFinal.value = selectedDonation.value === 'other'
+      ? customAmountInput.value.trim()
+      : selectedDonation.value;
+  }
 
-        customAmountWrap.hidden = !isOther;
-        customAmountInput.required = !!isOther;
+  optionInputs.forEach(function (input) {
+    input.addEventListener('change', togglePanels);
+  });
 
-        if (!donateSelected || !selectedDonation) {
-          donationAmountFinal.value = '';
-          customAmountInput.required = false;
-          return;
-        }
+  endorserTypeInputs.forEach(function (input) {
+    input.addEventListener('change', function () {
+      enforceSingleCheckbox(endorserTypeInputs, input);
+      updateEndorserFields();
+    });
+  });
 
-        donationAmountFinal.value = selectedDonation.value === 'other' ? customAmountInput.value.trim() : selectedDonation.value;
-      }
+  donationChoiceInputs.forEach(function (input) {
+    input.addEventListener('change', updateDonationAmount);
+  });
 
-      optionInputs.forEach(function (input) {
-        input.addEventListener('change', togglePanels);
+  volunteerHelpInputs.forEach(function (input) {
+    input.addEventListener('change', updateVolunteerOther);
+  });
+
+  if (customAmountInput) {
+    customAmountInput.addEventListener('input', updateDonationAmount);
+  }
+
+  form.addEventListener('submit', async function (event) {
+    var selected = updateSelectionSummary();
+
+    if (!selected.length) {
+      event.preventDefault();
+      window.alert('Please choose at least one way you would like to support Gary.');
+      return;
+    }
+
+    updateVolunteerOther();
+    updateDonationAmount();
+    updateEndorserFields();
+
+    if (!form.checkValidity()) {
+      return;
+    }
+
+    event.preventDefault();
+
+    var donateSelected = optionInputs.some(function (input) {
+      return input.checked && input.getAttribute('data-toggle') === 'donate-panel';
+    });
+
+    var donationAmount = donationAmountFinal.value || '';
+    var email = (form.querySelector('[name="email"]') || {}).value || '';
+    var firstName = (form.querySelector('[name="first-name"]') || {}).value || '';
+    var lastName = (form.querySelector('[name="last-name"]') || {}).value || '';
+    var phone = (form.querySelector('[name="phone"]') || {}).value || '';
+    var occupation = (form.querySelector('[name="donation-occupation"]') || {}).value || '';
+    var address1 = (form.querySelector('[name="donation-address-line-1"]') || {}).value || '';
+    var address2 = (form.querySelector('[name="donation-address-line-2"]') || {}).value || '';
+    var city = (form.querySelector('[name="donation-city"]') || {}).value || '';
+    var state = (form.querySelector('[name="donation-state-region"]') || {}).value || '';
+    var zip = (form.querySelector('[name="donation-zip-postal"]') || {}).value || '';
+    var country = (form.querySelector('[name="donation-country"]') || {}).value || '';
+
+    var query = new URLSearchParams();
+    query.set('submitted', '1');
+    query.set('options', selected.join('|'));
+    if (donationAmount) query.set('amount', donationAmount);
+    if (email) query.set('email', email);
+
+    var body = new URLSearchParams(new FormData(form)).toString();
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body
       });
 
-      endorserTypeInputs.forEach(function (input) {
-        input.addEventListener('change', function () {
-          enforceSingleCheckbox(endorserTypeInputs, input);
-          updateEndorserFields();
-        });
-      });
-
-      donationChoiceInputs.forEach(function (input) {
-        input.addEventListener('change', updateDonationAmount);
-      });
-
-      volunteerHelpInputs.forEach(function (input) {
-        input.addEventListener('change', updateVolunteerOther);
-      });
-
-      if (customAmountInput) {
-        customAmountInput.addEventListener('input', updateDonationAmount);
-      }
-
-      form.addEventListener('submit', function (event) {
-        var selected = updateSelectionSummary();
-        if (!selected.length) {
-          event.preventDefault();
-          window.alert('Please choose at least one way you would like to support Gary.');
-          return;
-        }
-
-        updateVolunteerOther();
-        updateDonationAmount();
-        updateEndorserFields();
-
-        if (!form.checkValidity()) {
-          return;
-        }
-
-        event.preventDefault();
-
-        var donationAmount = donationAmountFinal.value || '';
-        var email = (form.querySelector('[name="email"]') || {}).value || '';
-        var query = new URLSearchParams();
-        query.set('submitted', '1');
-        query.set('options', selected.join('|'));
-        if (donationAmount) query.set('amount', donationAmount);
-        if (email) query.set('email', email);
-
-        var body = new URLSearchParams(new FormData(form)).toString();
-
-        fetch('/', {
+      if (donateSelected) {
+        var stripeResponse = await fetch('/.netlify/functions/create-checkout-session', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: body
-        }).then(function () {
-          window.location.href = thankYouBase + '?' + query.toString();
-        }).catch(function () {
-          form.submit();
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            donationAmount: donationAmount,
+            firstName: firstName,
+            lastName: lastName,
+            phone: phone,
+            email: email,
+            occupation: occupation,
+            address1: address1,
+            address2: address2,
+            city: city,
+            state: state,
+            zip: zip,
+            country: country
+          })
         });
-      });
 
-      togglePanels();
-    }());
-  </script>
+        var stripeData = await stripeResponse.json();
 
+        if (!stripeResponse.ok || !stripeData.url) {
+          throw new Error(stripeData.error || 'Unable to start Stripe checkout.');
+        }
+
+        window.location.href = stripeData.url;
+        return;
+      }
+
+      window.location.href = thankYouBase + '?' + query.toString();
+    } catch (error) {
+      console.error(error);
+      alert(error.message || 'Something went wrong. Please try again.');
+    }
+  });
+
+  togglePanels();
+}());
+</script>
 </body>
 </html>
 
