@@ -48,7 +48,7 @@
           <div id="support-summary" class="check-by-mail-note" hidden>
             <p style="margin:0 0 .65rem;"><strong>You submitted:</strong> <span id="support-options-text"></span></p>
             <p id="donation-summary-line" style="margin:.35rem 0;" hidden><strong>Donation amount:</strong> <span id="donation-amount-text"></span></p>
-            <p id="email-summary-line" style="margin:.35rem 0;" hidden>A member of the campaign can follow up at <span id="support-email-text"></span>.</p>
+            <p id="email-summary-line" style="margin:.35rem 0;" hidden>A member of the campaign may follow up at <span id="support-email-text"></span>.</p>
           </div>
 
           <div class="hero-actions" style="margin-top: 1.5rem;">
@@ -188,7 +188,7 @@
           if (submitted) {
             var readableOptions = options ? options.split('|').join(', ') : 'your support submission';
 
-            if (heading) heading.textContent = 'Thank you for supporting Gary' + getFriendlyName(fullName) + '!';
+            if (heading) heading.textContent = 'Thank you for your support' + getFriendlyName(fullName) + '!';
             if (copy) copy.textContent = 'Your submission has been received and sent to the campaign.';
             if (summary) summary.hidden = false;
             if (optionsText) optionsText.textContent = readableOptions;
