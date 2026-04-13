@@ -1225,7 +1225,7 @@ input:focus, textarea:focus, .menu-button:focus-visible, .btn:focus-visible, .na
 }
 
 .money-input input {
-  padding-left: 2.1rem;
+  padding-left: 4rem;
 }
 
 @media (max-width: 900px) {
