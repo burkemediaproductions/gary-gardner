@@ -31,16 +31,21 @@ exports.handler = async (event) => {
       <pre>${JSON.stringify(data, null, 2)}</pre>
     `;
 
+    const toEmails = (process.env.CAMPAIGN_NOTIFICATION_EMAILS || "")
+    .split(",")
+    .map(e => e.trim())
+    .filter(Boolean);
+
     const result = await resend.emails.send({
-      from: process.env.RESEND_FROM,
-      to: [process.env.SUPPORT_FORM_TO],
-      replyTo: data.email || undefined,
-      subject,
-      html
+    from: process.env.EMAIL_FROM,
+    to: toEmails,
+    replyTo: data.email || undefined,
+    subject,
+    html
     });
 
     if (result.error) {
-      throw new Error(result.error.message || "Resend failed.");
+    throw new Error(result.error.message || "Resend failed.");
     }
 
     return {
