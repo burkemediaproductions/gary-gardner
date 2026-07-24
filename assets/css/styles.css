@@ -1409,3 +1409,70 @@ input:focus, textarea:focus, .menu-button:focus-visible, .btn:focus-visible, .na
 .faq-answer p:last-child {
   margin-bottom: 0;
 }
+
+
+/* Homepage endorsement rotator */
+.section--endorsements-home {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 15%, rgba(255,255,255,.13), transparent 24%),
+    linear-gradient(135deg, var(--purple-dark), var(--purple) 58%, #9238a6);
+  color: #fff;
+  padding-bottom: 8rem;
+}
+.gary-endorsement-heading { max-width: 900px; margin: 0 auto 2.25rem; text-align: center; }
+.gary-endorsement-heading p { color: rgba(255,255,255,.9); font-size: clamp(1.05rem,1.5vw,1.25rem); }
+.gary-endorsement-eyebrow {
+  margin: 0 0 .5rem; font-family: var(--display); font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--sand) !important;
+}
+.gary-endorsement-layout { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(280px,.85fr); gap: 1.5rem; align-items: stretch; }
+.gary-endorsement-stage,
+.gary-endorsement-summary {
+  border-radius: var(--radius); border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 22px 55px rgba(35,10,43,.28);
+}
+.gary-endorsement-stage { position: relative; min-height: 370px; background: #fff; color: var(--ink); overflow: hidden; }
+.gary-endorsement-card {
+  position: absolute; inset: 0; padding: clamp(1.6rem,4vw,3rem); display: grid;
+  grid-template-columns: auto 1fr; gap: 1.35rem; align-items: center;
+  opacity: 0; visibility: hidden; transform: translateX(24px);
+  transition: opacity .35s ease, transform .35s ease, visibility .35s ease;
+}
+.gary-endorsement-card.is-active { opacity: 1; visibility: visible; transform: translateX(0); }
+.gary-endorsement-mark {
+  width: clamp(76px,10vw,112px); aspect-ratio: 1; display: grid; place-items: center;
+  border-radius: 24px; background: linear-gradient(135deg,var(--blue),var(--purple)); color: #fff;
+  font-family: var(--display); font-size: clamp(2rem,5vw,3.6rem); font-weight: 800; box-shadow: var(--shadow);
+}
+.gary-endorsement-kicker { margin: 0 0 .4rem; color: var(--blue-deep); font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.gary-endorsement-card h3 { margin: 0; font-family: var(--display); color: var(--purple); text-transform: uppercase; line-height: .95; font-size: clamp(2.1rem,5vw,4.6rem); }
+.gary-endorsement-card p:last-child { margin: .75rem 0 0; color: var(--muted); font-size: clamp(1.05rem,1.8vw,1.35rem); }
+.gary-endorsement-controls {
+  position: absolute; left: 1rem; right: 1rem; bottom: 1rem; z-index: 5; display: flex;
+  align-items: center; justify-content: space-between; gap: 1rem;
+}
+.gary-endorsement-controls button {
+  width: 3rem; height: 3rem; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--purple); color: #fff; font-size: 2rem; line-height: 1;
+}
+.gary-endorsement-controls span { color: var(--muted); font-weight: 700; }
+.gary-endorsement-summary { padding: clamp(1.6rem,3vw,2.4rem); background: rgba(255,255,255,.1); backdrop-filter: blur(8px); }
+.gary-endorsement-summary h3 { margin: .8rem 0; font-family: var(--display); text-transform: uppercase; line-height: 1; font-size: clamp(2rem,4vw,3.4rem); color: #fff; }
+.gary-endorsement-summary p { color: rgba(255,255,255,.9); }
+.gary-endorsement-total { display: inline-flex; padding: .45rem .8rem; border-radius: 999px; background: var(--sand); color: var(--purple-dark); font-weight: 800; }
+.gary-endorsement-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.4rem; }
+.gary-endorsement-secondary { border-color: rgba(255,255,255,.65); }
+@media (max-width: 900px) {
+  .gary-endorsement-layout { grid-template-columns: 1fr; }
+  .gary-endorsement-stage { min-height: 400px; }
+}
+@media (max-width: 600px) {
+  .gary-endorsement-card { grid-template-columns: 1fr; align-content: center; text-align: center; padding-bottom: 5rem; }
+  .gary-endorsement-mark { margin: 0 auto; }
+  .gary-endorsement-stage { min-height: 470px; }
+  .gary-endorsement-actions .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gary-endorsement-card { transition: none; }
+}

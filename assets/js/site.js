@@ -305,4 +305,49 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  const garyRotator = document.querySelector("[data-gary-endorsement-rotator]");
+  if (garyRotator) {
+    const slides = Array.from(garyRotator.querySelectorAll("[data-gary-endorsement-slide]"));
+    const prev = garyRotator.querySelector("[data-gary-endorsement-prev]");
+    const next = garyRotator.querySelector("[data-gary-endorsement-next]");
+    const current = garyRotator.querySelector("[data-gary-endorsement-current]");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let index = 0;
+    let timer = null;
+
+    const showSlide = (newIndex) => {
+      if (!slides.length) return;
+      index = (newIndex + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => {
+        const active = slideIndex === index;
+        slide.classList.toggle("is-active", active);
+        slide.setAttribute("aria-hidden", active ? "false" : "true");
+      });
+      if (current) current.textContent = String(index + 1);
+    };
+
+    const stopAuto = () => {
+      if (timer) window.clearInterval(timer);
+      timer = null;
+    };
+
+    const startAuto = () => {
+      stopAuto();
+      if (!reduceMotion && slides.length > 1) {
+        timer = window.setInterval(() => showSlide(index + 1), 6000);
+      }
+    };
+
+    if (prev) prev.addEventListener("click", () => { showSlide(index - 1); startAuto(); });
+    if (next) next.addEventListener("click", () => { showSlide(index + 1); startAuto(); });
+    garyRotator.addEventListener("mouseenter", stopAuto);
+    garyRotator.addEventListener("mouseleave", startAuto);
+    garyRotator.addEventListener("focusin", stopAuto);
+    garyRotator.addEventListener("focusout", startAuto);
+
+    showSlide(0);
+    startAuto();
+  }
+
 });
