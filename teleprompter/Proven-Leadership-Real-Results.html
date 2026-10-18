@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gary Gardner — Teleprompter</title>
+<style>
+:root{color-scheme:dark;--font-size:58px}*{box-sizing:border-box}html,body{margin:0;height:100%;background:#050505;color:#fff;font-family:Arial,Helvetica,sans-serif;overflow:hidden}.stage{position:fixed;inset:0;overflow:hidden;background:#050505}.reading-line{position:absolute;top:38%;left:0;right:0;border-top:1px solid rgba(255,255,255,.17);pointer-events:none;z-index:2}.reading-line:before{content:"";position:absolute;left:0;top:-4px;width:12px;height:8px;background:#ffcc55}.script{position:absolute;top:0;left:0;width:100%;padding:0 max(7vw,24px);font-size:var(--font-size);font-weight:650;line-height:1.5;letter-spacing:.005em;will-change:transform;transform:translate3d(0,0,0);white-space:normal}.script p{margin:0 0 1em}.script.mirrored{transform:scaleX(-1)}.toolbar{position:fixed;z-index:5;bottom:0;left:0;right:0;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;padding:14px 18px 20px;background:linear-gradient(transparent,rgba(17,17,17,.96) 20%);transition:opacity .2s}.toolbar.hidden{opacity:0;pointer-events:none}.toolbar button,.toolbar select{background:#242424;color:white;border:1px solid #606060;border-radius:10px;padding:11px 15px;font-size:16px;cursor:pointer}.toolbar button:hover{background:#393939}.toolbar button.primary{background:#2372d9;border-color:#2372d9;font-weight:bold}.toolbar label{display:flex;gap:8px;align-items:center;font-size:14px}.toolbar input[type=range]{width:110px;accent-color:#4a9aff}.value{min-width:45px;font-variant-numeric:tabular-nums;text-align:center}.hint{position:fixed;top:12px;right:16px;background:#222b;border-radius:6px;padding:6px 10px;color:#aaa;font-size:12px;z-index:4}.script[data-mirror="true"]{scale:-1 1}@media(max-width:650px){.toolbar{gap:8px;padding-bottom:12px}.toolbar button{padding:9px 11px}.toolbar label{font-size:12px}.toolbar input[type=range]{width:80px}}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+ <div class="reading-line"></div>
+ <article class="script" id="script">
+ <p>Hi – I’m Gary Gardner, your District 1 City Council Member here in Desert Hot Springs. You know, it’s easy for an untested candidate with no history of participation in our city to make promises – and we all know that talk is cheap. Challengers make big promises and tell voters exactly what they want to hear, but delivering real results takes experience, proven leadership, and a track record of getting things done. I have that track record.</p>
+ <p>I’ve been serving you for eight years, working hard to move our city forward, and we’re finally seeing that progress take shape, especially in the last two years. We cannot afford to risk that momentum by replacing proven experience with untested promises.</p>
+ <p>I have the experience that matters, and I’m committed to building on the progress we’ve made together. Re-elect me, and let’s continue building on our city’s success!</p>
+ <p>It’s easy to stand outside and take pot-shots based on misinformation, and to focus on the negative rather than recognize the progress we’re making. But ask yourself, where are the real solutions? Where is the meaningful vision for our community? So far, we’ve heard plenty of negativity of what’s wrong – some going back many years -- but not a clear, realistic plan for how to make the city better. You’ve seen what I’ve delivered, and what I’m working on moving forward – check out my web page for more.</p>
+ <p>Our city deserves proven leadership, realistic solutions, and a vision that builds on the progress we’ve already made—not negativity and empty promises. I hope I’ve earned your vote.</p>
+ <p>I’m Gary Gardner -- I do my own videos -- and I approve of this message.</p>
+ </article>
+</div>
+<div class="hint" id="hint">Space: play/pause · ↑ ↓: speed · + −: text size · H: hide controls</div>
+<div class="toolbar" id="toolbar">
+ <button class="primary" id="play">▶ Start</button>
+ <button id="reset">↺ Restart</button>
+ <label>Speed <input id="speed" type="range" min="5" max="180" step="1" value="40"><span class="value" id="speedValue">40</span></label>
+ <label>Text <input id="size" type="range" min="24" max="120" step="2" value="58"><span class="value" id="sizeValue">58px</span></label>
+ <button id="mirror">Mirror: Off</button>
+ <button id="full">⛶ Fullscreen</button>
+ <button id="hide">Hide controls</button>
+</div>
+<script>
+(() => {
+ const stage=document.getElementById('stage'), script=document.getElementById('script');
+ const play=document.getElementById('play'),speed=document.getElementById('speed'),size=document.getElementById('size');
+ const toolbar=document.getElementById('toolbar'),hint=document.getElementById('hint');
+ let y=0,running=false,last=0,hideTimeout;
+ const startPosition=()=>stage.clientHeight*.68;
+ function display(){script.style.transform=`translate3d(0,${startPosition()-y}px,0)`;}
+ function toggle(force){running=typeof force==='boolean'?force:!running;play.textContent=running?'❚❚ Pause':'▶ Start';last=0;}
+ function reset(){toggle(false);y=0;display();}
+ function frame(t){if(last && running){y+=((+speed.value)*((t-last)/1000));if(y>script.scrollHeight+stage.clientHeight*.25){toggle(false);}display();}last=t;requestAnimationFrame(frame);}
+ function font(){document.documentElement.style.setProperty('--font-size',size.value+'px');document.getElementById('sizeValue').textContent=size.value+'px';display();}
+ speed.addEventListener('input',()=>document.getElementById('speedValue').textContent=speed.value);
+ size.addEventListener('input',font);play.onclick=()=>toggle();document.getElementById('reset').onclick=reset;
+ document.getElementById('mirror').onclick=e=>{let on=script.dataset.mirror!=='true';script.dataset.mirror=String(on);e.currentTarget.textContent='Mirror: '+(on?'On':'Off');};
+ document.getElementById('full').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen?.();};
+ function hideControls(){toolbar.classList.toggle('hidden');hint.style.display=toolbar.classList.contains('hidden')?'none':'';}
+ document.getElementById('hide').onclick=hideControls;
+ document.addEventListener('keydown',e=>{if(e.target.matches('input'))return;if(e.code==='Space'){e.preventDefault();toggle();}else if(e.key==='ArrowUp'){e.preventDefault();speed.value=Math.min(180,+speed.value+5);speed.dispatchEvent(new Event('input'));}else if(e.key==='ArrowDown'){e.preventDefault();speed.value=Math.max(5,+speed.value-5);speed.dispatchEvent(new Event('input'));}else if(e.key==='Equal'||e.key==='+'){size.value=Math.min(120,+size.value+2);font();}else if(e.key==='Minus'){size.value=Math.max(24,+size.value-2);font();}else if(e.key.toLowerCase()==='h')hideControls();else if(e.key.toLowerCase()==='r')reset();});
+ stage.addEventListener('wheel',e=>{if(!running){y=Math.max(0,y+e.deltaY);display();}},{passive:true});
+ let touchY=null;stage.addEventListener('touchstart',e=>{touchY=e.touches[0].clientY},{passive:true});stage.addEventListener('touchmove',e=>{if(!running&&touchY!==null){const next=e.touches[0].clientY;y=Math.max(0,y+touchY-next);touchY=next;display();}},{passive:true});
+ window.addEventListener('resize',display);font();display();requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
