@@ -1527,3 +1527,66 @@ input:focus, textarea:focus, .menu-button:focus-visible, .btn:focus-visible, .na
 @media (prefers-reduced-motion: reduce) {
   .gary-endorsement-card { transition: none; }
 }
+
+
+/* SMS signup page */
+.sms-page-eyebrow {
+  margin: 0 0 .55rem;
+  color: rgba(255,255,255,.88);
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+#main-content .sms-consent-line {
+  display: grid;
+  grid-template-columns: 1.25rem minmax(0, 1fr);
+  align-items: start;
+  gap: .8rem;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+#main-content .sms-consent-line input[type="checkbox"] {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: .28rem 0 0;
+  padding: 0;
+  border-radius: 4px;
+}
+
+#main-content .sms-consent-line span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+#main-content .sms-consent-line a {
+  overflow-wrap: anywhere;
+}
+
+#main-content .form-note {
+  padding: 1.1rem 1.2rem;
+  border-radius: 16px;
+  background: rgba(23,169,225,.08);
+  border: 1px solid rgba(23,169,225,.2);
+}
+
+#main-content .form-note > strong {
+  display: block;
+  margin-bottom: .35rem;
+  color: var(--purple);
+  font-size: 1.05rem;
+}
+
+#main-content .form-note p {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+@media (max-width: 960px) {
+  #main-content .grid-2 {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
