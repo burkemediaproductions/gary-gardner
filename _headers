@@ -1,3 +1,10 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; media-src 'self' https:; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; frame-src 'self' https://www.youtube.com https://youtube.com;
+
 /assets/img/ballots/sms-message.gif
   Content-Type: image/gif
-  Content-Disposition: inline; filename="gary-dhs.gif"
+  Content-Disposition: inline
